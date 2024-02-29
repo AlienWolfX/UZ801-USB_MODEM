@@ -52,11 +52,74 @@ twrp install /sdcard/SR5-SuperSU-v2.82-SR5-20171001224502.zip
 reboot
 ```
 
+## Installing OpenWrt
+
+To install openwrt on the device you will need
+
+- <a href="openwrt-UZ801_v3.2.tar.gz">OpenWrt UZ801_V3.2</a>
+
+* {4 BIN FILES FROM YOUR FIRMWARE}
+
+Steps
+
+```
+adb shell reboot edl
+
+python3 edl wf {OPENWRT FILE NAME}
+
+python3 edl reset
+
+adb reboot-bootloader
+
+fastboot oem reboot-edl
+
+python3 edl w fsc fsc.bin
+python3 edl w fsg fsg.bin
+python3 edl w modemst1 modemst1.bin
+python3 edl w modemst2 modemst2.bin
+
+python3 edl reset
+```
+
+## Troubleshooting OpenWrt/Useful Commands
+
+### Connection Refuse
+
+```
+Name
+INTERNET
+
+Protocol
+Any
+
+Outbound zone
+wan modem
+
+Source address
+any
+
+Destination address
+any
+
+Action
+MASQUERADE - Automatically rewrite to outbound interface IP
+```
+
+### Setting Band
+
+```
+
+```
+
 ## Firmware
 
 Below, I've provided a dump of my firmware with root flash. Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2.
 
 {To be uploaded}
+
+#### In case you bricked your device and cannot access EDL just short the pins below
+
+<p align="center"><a href="https://wiki.postmarketos.org/images/0/00/Uz801_board.jpg" target="_blank"><img src="img/Uz801_board.jpg" width="200" alt="EDL PIN"></a></p>
 
 ## License
 
