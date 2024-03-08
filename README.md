@@ -58,7 +58,7 @@ To install openwrt on the device you will need
 
 - <a href="openwrt-UZ801_v3.2.tar.gz">OpenWrt UZ801_V3.2</a>
 
-* {4 BIN FILES FROM YOUR FIRMWARE}
+* <a href='firmware.tar.xz'>Modem Firmware</a>
 
 Steps
 
@@ -108,14 +108,14 @@ MASQUERADE - Automatically rewrite to outbound interface IP
 ### Setting Band
 
 ```
-
+mmcli -m 0 --set-current-bands='{band}'
 ```
 
 ## Firmware
 
 Below, I've provided a dump of my firmware with root flash. Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2.
 
-{To be uploaded}
+- <a href="https://drive.google.com/file/d/18SiujpzU4W2YBRhcZdck5IQEYAyBjcZi/view?usp=sharing">UZ801_V3.2 Stock ROM</a>
 
 #### In case you bricked your device and cannot access EDL just short the pins below
 
