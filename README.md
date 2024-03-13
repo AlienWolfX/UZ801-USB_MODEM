@@ -29,8 +29,8 @@ python3 edl wf {your_filename}.bin
 
 To install SuperSU on the USB Dongle, you need to have these files:
 
-- <a href="SR5-SuperSU-v2.82-SR5-20171001224502.zip">SuperSU</a>
-- <a href="twrp-3.1.1-0-seed.img">TWRP</a>
+- <a href="files/SR5-SuperSU-v2.82-SR5-20171001224502.zip">SuperSU</a>
+- <a href="files/twrp-3.1.1-0-seed.img">TWRP</a>
 
 After obtaining the necessary files, open a new terminal and execute the following commands:
 
@@ -56,9 +56,9 @@ reboot
 
 To install openwrt on the device you will need
 
-- <a href="openwrt-UZ801_v3.2.tar.gz">OpenWrt UZ801_V3.2</a>
+- <a href="files/openwrt-UZ801_v3.2.tar.gz">OpenWrt UZ801_V3.2</a>
 
-* <a href='firmware.tar.xz'>Modem Firmware</a>
+* <a href='files/firmware.tar.xz'>Modem Firmware</a>
 
 Steps
 
@@ -113,7 +113,7 @@ mmcli -m 0 --set-current-bands='{band}'
 
 ## Firmware
 
-Below, I've provided a dump of my firmware with root flash. Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2.
+Below, I've provided a stock dump of my firmware. Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2.
 
 - <a href="https://drive.google.com/file/d/18SiujpzU4W2YBRhcZdck5IQEYAyBjcZi/view?usp=sharing">UZ801_V3.2 Stock ROM</a>
 
