@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/AlienWolfX/UZ801-USB_MODEM" target="_blank"><img src="img/4g-modem.png" width="200" alt="EcoSwap Logo"></a></p>
+<br /> <p align="center"><a href="https://github.com/AlienWolfX/UZ801-USB_MODEM" target="_blank"><img src="img/4g_lte.png" width="200" alt="EcoSwap Logo"></a></p>
 
 <p align="center"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
@@ -65,7 +65,7 @@ Steps
 ```
 adb shell reboot edl
 
-python3 edl wf {OPENWRT FILE NAME}
+python3 edl wf {OPENWRT FILE}
 
 python3 edl reset
 
@@ -81,9 +81,14 @@ python3 edl w modemst2 modemst2.bin
 python3 edl reset
 ```
 
-## Troubleshooting OpenWrt/Useful Commands
+## Installing Debian
 
-### Connection Refuse
+Follow the Openstick Instructor from here
+
+## Troubleshooting OpenWrt/Useful Commands and Tools
+
+### Connection Refuse 
+##### If you encounter this problem simply set this on your OpenWRT dashboard
 
 ```
 Name
@@ -111,6 +116,12 @@ MASQUERADE - Automatically rewrite to outbound interface IP
 mmcli -m 0 --set-current-bands='{band}'
 ```
 
+### Fetching/Creating Messages
+##### <a href="files/msg.py">Here</a> is a simply python script I used to Add, Send, and Recieve messages (Only works with OpenWRT)
+```
+python3 msg.py {argument}
+```
+
 ## Firmware
 
 Below, I've provided a stock dump of my firmware. Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2.
@@ -119,7 +130,7 @@ Below, I've provided a stock dump of my firmware. Please note that flashing this
 
 #### In case you bricked your device and cannot access EDL just short the pins below
 
-<p align="center"><a href="https://wiki.postmarketos.org/images/0/00/Uz801_board.jpg" target="_blank"><img src="img/Uz801_board.jpg" width="200" alt="EDL PIN"></a></p>
+<p align="center"><a href="img/Uz801_board.jpg" target="_blank"><img src="img/Uz801_board.jpg" width="2000" alt="EDL PIN"></a></p>
 
 ## License
 
