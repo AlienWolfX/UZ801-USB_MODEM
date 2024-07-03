@@ -5,6 +5,9 @@
 
 ## Firmware Dump and Restore
 
+<details>
+<summary>Instructions</summary>
+
 Before making any modifications to your device, such as rooting, it's crucial to first back up its firmware. You'll need this <a href="https://github.com/bkerler/edl">tool</a> to execute the commands below.
 
 Note: To enable EDL mode on your device, execute the following command:
@@ -24,8 +27,12 @@ To restore simply run
 ```
 python3 edl wf {your_filename}.bin
 ```
+</details>
 
 ## Achieving SuperSU
+
+<details>
+<summary>Instructions</summary>
 
 To install SuperSU on the USB Dongle, you need to have these files:
 
@@ -51,8 +58,12 @@ twrp install /sdcard/SR5-SuperSU-v2.82-SR5-20171001224502.zip
 
 reboot
 ```
+</details>
 
 ## Installing OpenWrt
+
+<details>
+<summary>Instructions</summary>
 
 To install openwrt on the device you will need
 
@@ -80,12 +91,16 @@ python3 edl w modemst2 modemst2.bin
 
 python3 edl reset
 ```
+</details>
 
 ## Installing Debian
 
-Follow the Openstick Instructor from here
+Follow the Openstick Instructions
 
 ## Troubleshooting OpenWrt/Useful Commands and Tools
+
+<details>
+<summary>Instructions</summary>
 
 ### Connection Refuse 
 ##### If you encounter this problem simply set this on your OpenWRT dashboard
@@ -121,9 +136,9 @@ mmcli -m 0 --set-current-bands='{band}'
 ```
 python3 msg.py {argument}
 ```
+</details>
 
 ## Firmware
-
 Below, I've provided a stock dump of my firmware. Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2.
 
 - <a href="https://drive.google.com/file/d/18SiujpzU4W2YBRhcZdck5IQEYAyBjcZi/view?usp=sharing">UZ801_V3.2 Stock ROM</a>
@@ -135,3 +150,5 @@ Below, I've provided a stock dump of my firmware. Please note that flashing this
 ## License
 
 This repository is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+<p align="center">Copyright <b>AlienWolfX</b> 2024</p>
