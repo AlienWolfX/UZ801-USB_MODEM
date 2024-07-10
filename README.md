@@ -95,7 +95,18 @@ python3 edl reset
 
 ## Installing Debian
 
-Follow the Openstick Instructions
+<details>
+<summary>Instructions</summary>
+
+1. Check if ADB is enabled. If "adb devices" does not show any devices, open [http://192.168.100.1/usbdebug.html](http://192.168.100.1/usbdebug.html) to enable ADB.
+2. Download the file using: `wget https://download.wvthoog.nlopenstick-uz801-v3.0.zip`.
+3. Extract the zip file.
+4. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
+5. Wait for the script to execute.
+6. Done, All basic functions should now work. Configure the device for your chosen use case.
+
+###### For more information visit [Wim van 't Hoog](https://wvthoog.nl/openstick/) blog
+</details>
 
 ## Troubleshooting OpenWrt/Useful Commands and Tools
 
