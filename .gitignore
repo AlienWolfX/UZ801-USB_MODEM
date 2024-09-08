@@ -1,1 +1,6 @@
 files/adbcontrol/*
+misc/*
+*.zip
+.env/*
+.vscode/*
+www/*

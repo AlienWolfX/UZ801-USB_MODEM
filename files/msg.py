@@ -73,10 +73,7 @@ def view_msg():
         text = re.search(r'text: (.*)', sms_content)
         timestamp = re.search(r'timestamp: (.*)', sms_content)
         if number and text and timestamp:
-            # Add the data to the table
             table.add_row([number.group(1), text.group(1), timestamp.group(1)])
-    
-    # Print the table
     print(table)
 
 cmd = sys.argv
@@ -104,7 +101,7 @@ if len(cmd) > 1:
         forward_msg()
     elif cmd[1] == 'version':
         print('UZ801 SMS Tool v1.2.0')
-        print('Developed by AlienWolfX')
+        print('Modified by AlienWolfX')
 else:
     print('Usage: python3 msg.py [command]')
     print('Available Commands')
