@@ -3,24 +3,41 @@
 <p align="center"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Initial
+
+Before doing anything to your USB dongle, you must first enable ADB (if it's not already enabled) by accessing this URL: [http://192.168.100.1/usbdebug.html](http://192.168.100.1/usbdebug.html).
+
+You need to have:
+
+* [edl](https://github.com/bkerler/edl)
+
+If you are using Windows, you must install the following:
+
+* [Universal ADB Driver](https://adb.clockworkmod.com/)
+* [QDLoader 9008 Driver](https://qdloader9008.com/)
+* [ADB Platform Tools](https://gist.github.com/ifiokjr/b70882d3f1182ed48ec7eefa5c93a740)
+* [Zadig](https://zadig.akeo.ie/)
+
+On Windows, you might encounter this error: `NotImplementedError: Operation not supported or unimplemented on this platform`. One way to fix this is by uninstalling the QDLoader 9008 Driver and replacing it with Zadig WinUSB[⁽¹⁾](https://github.com/bkerler/edl/issues/349#issuecomment-2060152724).
+
 ## Firmware Dump and Restore
 
 <details>
 <summary>Instructions</summary>
 
-#### Before making any modifications to your device, such as rooting, it's crucial to first back up its firmware. You'll need this <a href="https://github.com/bkerler/edl">tool</a> to execute the commands below.
-
-Note: To enable EDL mode on your device, execute the following command:
+To enable EDL mode on your device, execute the following command:
 
 `adb reboot edl`
 
-Alternatively, for a more hands-on approach, you can short the D+ and GND on the USB before connecting it to your computer. Once the device is in EDL mode, execute the following commands:
+Alternatively, for a more hands-on approach, you can short the D+ and GND on the USB before connecting it to your computer. Once the device is in EDL mode, execute the following commands to create a backup:
 
 `python3 edl rf {your_filename}.bin`
 
-To restore simply run
+To restore simply run:
 
 `python3 edl wf {your_filename}.bin`
+
+You can then use tools such as PowerISO to view the different partitions of the image.
 </details>
 
 ## Achieving SuperSU
@@ -59,7 +76,7 @@ reboot
 
 <summary>Instructions</summary>
 
-#### As the device is running Android, we can see the display as if it has a screen using a tool named adbcontrol.
+As the device is running Android, we can see the display as if it has a screen using a tool named adbcontrol.
 
 - <a href="files/adbcontrol.zip">adbcontrol</a>
 
@@ -89,7 +106,7 @@ localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}
 
 - <a href="files/openwrt-UZ801_v3.2.tar.gz">OpenWrt UZ801_V3.2</a>
 
-- <a href='files/firmware.tar.xz'>Modem Firmware</a>
+- fsc.bin, fsg.bin modemst1.bin, modemst2.bin from your backup
 
 Steps
 
@@ -118,12 +135,11 @@ python3 edl reset
 <details>
 <summary>Instructions</summary>
 
-1. Check if ADB is enabled. If "adb devices" does not show any devices, open [http://192.168.100.1/usbdebug.html](http://192.168.100.1/usbdebug.html) to enable ADB.
-2. Download the file using: `wget https://download.wvthoog.nlopenstick-uz801-v3.0.zip`.
-3. Extract the zip file.
-4. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
-5. Wait for the script to execute.
-6. Done, All basic functions should now work. Configure the device for your chosen use case.
+1. Download the file using: `wget https://download.wvthoog.nlopenstick-uz801-v3.0.zip`.
+2. Extract the zip file.
+3. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
+4. Wait for the script to execute.
+5. Done, All basic functions should now work. Configure the device for your chosen use case.
 
 For more information visit [Wim van 't Hoog](https://wvthoog.nl/openstick/) blog
 </details>
@@ -178,7 +194,7 @@ python3 msg.py {argument}
 </details>
 
 ## Firmware
-Below, I've provided a stock dump of my firmware (Philippines version). Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2.
+Below, I’ve provided a stock dump of my firmware (Philippines version). Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2. You might also need to replace the modem firmware for it to work in your region.
 
 - <a href="https://drive.google.com/file/d/18SiujpzU4W2YBRhcZdck5IQEYAyBjcZi/view?usp=sharing">UZ801_V3.2 Stock ROM</a>
 
