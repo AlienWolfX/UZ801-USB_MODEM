@@ -1,7 +1,43 @@
-<br /> <p align="center"><a href="https://github.com/AlienWolfX/UZ801-USB_MODEM" target="_blank"><img src="img/4g_lte.png" width="200" alt="EcoSwap Logo"></a></p>
+# UZ801 Analysis
 
-<p align="center"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+ 
+<details>
+
+<summary>Table of Contents</summary>
+
+- [Introduction](#introduction)
+- [Initial](#initial)
+- [Firmware Dump and Restore](#firmware-dump-and-restore)
+- [Installing SuperSU](#installing-supersu)
+- [View Device Display](#view-device-display)
+- [Installing OpenWrt](#installing-openwrt)
+- [Installing Debian](#installing-debian)
+- [Troubleshooting OpenWrt/Useful Commands and Tools](rsc/troubleshooting.md)
+- [Firmware](#firmware)
+- [Recovery](#recovery)
+- [References](#references)
+- [License](#license)
+
+</details>
+
+## Introduction
+
+A couple of months ago, I purchased this 4G LTE USB Dongle from Shopee for around 300+ PHP. Out of curiosity, I searched the internet to see if there was a way to modify the horrible web UI of the device. Here are some images of the device along with the board and it's chips.
+
+| ![front](img/front.jpg "front")    | ![back](img/back.jpg "back")       |
+| ---------------------------------- | ---------------------------------- |
+| ![board1](img/board1.jpg "board1") | ![board2](img/board2.jpg "board2") |
+| ![front](img/cpu.jpg "front")      | ![back](img/storage.jpg "back")    |
+| ![board1](img/soc1.jpg "board1")   | ![board2](img/soc2.jpg "board2")   |
+| ![front](img/soc3.jpg "front")     |                                    |
+
+The device heart of the dongle is a MSM8916 which is running a stripped-down version of Android 4.4.4 KitKat, the android setup restricts the use of the additional two CPU cores. I believe this is to prevent the device from overheating.
+
+The web UI is so poorly designed that simply changing the URL and calling `main.html` will take you to the main page:
+
+![WTF?](img/horrible_authentication.gif)
+
 
 ## Initial
 
@@ -9,21 +45,18 @@ Before doing anything to your USB dongle, you must first enable ADB (if it's not
 
 You need to have:
 
-* [edl](https://github.com/bkerler/edl)
+- [edl](https://github.com/bkerler/edl)
 
 If you are using Windows, you must install the following:
 
-* [Universal ADB Driver](https://adb.clockworkmod.com/)
-* [QDLoader 9008 Driver](https://qdloader9008.com/)
-* [ADB Platform Tools](https://gist.github.com/ifiokjr/b70882d3f1182ed48ec7eefa5c93a740)
-* [Zadig](https://zadig.akeo.ie/)
+- [Universal ADB Driver](https://adb.clockworkmod.com/)
+- [QDLoader 9008 Driver](https://qdloader9008.com/)
+- [ADB Platform Tools](https://gist.github.com/ifiokjr/b70882d3f1182ed48ec7eefa5c93a740)
+- [Zadig](https://zadig.akeo.ie/)
 
 On Windows, you might encounter this error: `NotImplementedError: Operation not supported or unimplemented on this platform`. One way to fix this is by uninstalling the QDLoader 9008 Driver and replacing it with Zadig WinUSB[⁽¹⁾](https://github.com/bkerler/edl/issues/349#issuecomment-2060152724).
 
 ## Firmware Dump and Restore
-
-<details>
-<summary>Instructions</summary>
 
 To enable EDL mode on your device, execute the following command:
 
@@ -38,21 +71,17 @@ To restore simply run:
 `python3 edl wf {your_filename}.bin`
 
 You can then use tools such as PowerISO to view the different partitions of the image.
-</details>
 
-## Achieving SuperSU
+## Getting Root
 
-<details>
-<summary>Instructions</summary>
+To gain root access, you need to install SuperSU on the USB dongle. Ensure you have the following files:
 
-To install SuperSU on the USB Dongle, you need to have these files:
-
-- <a href="files/SR5-SuperSU-v2.82-SR5-20171001224502.zip">SuperSU</a>
-- <a href="files/twrp-3.1.1-0-seed.img">TWRP</a>
+- [SuperSU](files/SR5-SuperSU-v2.82-SR5-20171001224502.zip)
+- [TWRP](files/twrp-3.1.1-0-seed.img)
 
 After obtaining the necessary files, open a new terminal and execute the following commands:
 
-```
+```bash
 adb push SR5-SuperSU-v2.82-SR5-20171001224502.zip /sdcard
 
 adb reboot bootloader
@@ -62,55 +91,86 @@ fastboot boot twrp-3.1.1-0-seed.img
 
 The device may take some time to restart adb. Please be patient. Once adb is up and running again, proceed with the following commands:
 
-```
+```bash
 adb shell
-
 twrp install /sdcard/SR5-SuperSU-v2.82-SR5-20171001224502.zip
-
 reboot
 ```
-</details>
 
 ## View Device Display
-<details>
-
-<summary>Instructions</summary>
 
 As the device is running Android, we can see the display as if it has a screen using a tool named adbcontrol.
 
-- <a href="files/adbcontrol.zip">adbcontrol</a>
+- [adbcontrol](files/adbcontrol.zip)
 
-Steps
+Steps:
 
-```
+```bash
 extract adbcontrol.zip
-cd adbcontrol 
+cd adbcontrol
 modify config.properties by pointing to the appropriate directories
 java -jar adbcontrol.jar
 ```
 
-Note
+Note:
 
-```
+```bash
 adbCommand = {LOCATION_OF_ADB_EXE}
 localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}
 ```
-</details>
+
+## Modifying Web UI
+
+Thanks to this wonderful and well written guide from [here](https://www.blinkenlights.ch/ccms/posts/aliexpress-lte-2/) we can now modify the web ui
+
+First and foremost we need to identify the correct apk file some version of this dongle comes with the Jetty2m.apk and MifiService.apk in my case I have the MifiService.apk which was located in `/system/priv-app/MifiService.apk` I then pull the packed using `adb pull /system/priv-app/MifiService.apk` to get the apk package here are some of the steps from the instructions above:
+
+Fetch test-keys:
+
+```bash
+git clone https://android.googlesource.com/platform/build
+cd build/target/product/security/
+openssl pkcs8 -inform DER -nocrypt -in platform.pk8 -out platform.pem
+openssl pkcs12 -export -in platform.x509.pem -inkey platform.pem -out platform.p12 -password pass:android -name testkey
+keytool -importkeystore -deststorepass android -destkeystore platform.keystore -srckeystore platform.p12 -srcstoretype PKCS12 -srcstorepass android
+mv platform.keystore {YOUR_WORK_DIR}
+```
+
+Decompile apk:
+
+`java -jar apktool.jar d {APP_NAME}.apk -o {APP_NAME}`
+
+You can then start to customization under the assets folder
+
+> [!NOTE]  
+> Don't forget to change the `versionCode` and `versionName` in the apktool.yml
+
+Recompile apkn(If asked for a passphrase type `android`):
+
+`java -jar apktool.jar b -o unsigned.apk {APP_NAME}`
+
+Zipalign:
+
+```bash
+zipalign -v 4 unsigned.apk aligned.apk
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ./platform.keystore  aligned.apk testkey
+```
+
+Install apk:
+
+`adb install -r aligned.apk `
 
 ## Installing OpenWrt
 
-<details>
-<summary>Instructions</summary>
+To install openwrt on the device you will need
 
-#### To install openwrt on the device you will need
-
-- <a href="files/openwrt-UZ801_v3.2.tar.gz">OpenWrt UZ801_V3.2</a>
+- [OpenWRT UZ801_v3.2](files/openwrt-UZ801_v3.2.tar.gz)
 
 - fsc.bin, fsg.bin modemst1.bin, modemst2.bin from your backup
 
 Steps
 
-```
+```bash
 adb shell reboot edl
 
 python3 edl wf {OPENWRT FILE}
@@ -128,12 +188,8 @@ python3 edl w modemst2 modemst2.bin
 
 python3 edl reset
 ```
-</details>
 
 ## Installing Debian
-
-<details>
-<summary>Instructions</summary>
 
 1. Download the file using: `wget https://download.wvthoog.nlopenstick-uz801-v3.0.zip`.
 2. Extract the zip file.
@@ -142,74 +198,32 @@ python3 edl reset
 5. Done, All basic functions should now work. Configure the device for your chosen use case.
 
 For more information visit [Wim van 't Hoog](https://wvthoog.nl/openstick/) blog
-</details>
-
-## Troubleshooting OpenWrt/Useful Commands and Tools
-
-<details>
-<summary>Instructions</summary>
-
-### Connection Refuse 
-#### If you encounter this problem simply set this on your OpenWRT dashboard
-
-```
-Name
-INTERNET
-
-Protocol
-Any
-
-Outbound zone
-wan modem
-
-Source address
-any
-
-Destination address
-any
-
-Action
-MASQUERADE - Automatically rewrite to outbound interface IP
-```
-
-### No internet connection via RNDIS using Wi-Fi
-#### Execute:
-`nmcli connection modify usb0 ipv4.method shared`
-
-#### After:
-```
-nmcli connection down usb0
-nmcli connection up usb0
-```
-
-### Setting Band
-
-`mmcli -m 0 --set-current-bands='{band}'`
-
-### Fetching/Creating Messages
-##### <a href="files/msg.py">Here</a> is a simply python script I used to Add, Send, and Recieve messages (Only works with OpenWRT and Debian)
-```
-python3 msg.py {argument}
-```
-</details>
 
 ## Firmware
-Below, I’ve provided a stock dump of my firmware (Philippines version). Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2. You might also need to replace the modem firmware for it to work in your region.
 
-- <a href="https://drive.google.com/file/d/18SiujpzU4W2YBRhcZdck5IQEYAyBjcZi/view?usp=sharing">UZ801_V3.2 Stock ROM</a>
+Below, I’ve provided a stock dump of my firmware (Philippines version). Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2. You might also need to replace the modem firmware with yours for it to work in your region.
 
-#### In case you bricked your device and cannot access EDL just short the pins below
+- [UZ801_V3.2 Stock ROM](https://drive.google.com/file/d/18SiujpzU4W2YBRhcZdck5IQEYAyBjcZi/view?usp=sharing)
 
-<p align="center"><a href="img/Uz801_board.jpg" target="_blank"><img src="img/Uz801_board.jpg" width="2000" alt="EDL PIN"></a></p>
+## Recovery
+
+In case you bricked your device and cannot access EDL just short the pins below
+
+![alt text](img/Uz801_board.jpg "UZ801 Board")
 
 ## References
 
 This project references the following resources:
 
 - [Wim van 't Hoog](https://wvthoog.nl/openstick/) - For Debian Kernel build and instructions.
+
 - [ddscentral](https://github.com/ddscentral) - For Debian build and instructions.
-- [postmarketOS](https://wiki.postmarketos.org/wiki/Zhihe_series_LTE_dongles_(generic-zhihe)) - Instructions and Board pinout image
+
+- [postmarketOS](<https://wiki.postmarketos.org/wiki/Zhihe_series_LTE_dongles_(generic-zhihe)>) - Instructions and Board pinout image
+
 - [edl](https://github.com/bkerler/edl) - Primary tool for dumping the Original firmware
+
+- [adrian-bl](https://github.com/adrian-bl) - Instruction for modifying Web UI
 
 These resources have been instrumental in the creation of this project.
 

@@ -4,3 +4,4 @@ misc/*
 .env/*
 .vscode/*
 www/*
+build/*
