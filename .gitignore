@@ -5,3 +5,4 @@ misc/*
 .vscode/*
 www/*
 build/*
+*.apk

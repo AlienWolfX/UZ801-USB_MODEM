@@ -13,9 +13,9 @@
 - [View Device Display](#view-device-display)
 - [Modifying Web UI](#modifying-web-ui)
 - [Installing OpenWrt](#installing-openwrt)
-- [Installing Debian](#installing-debian)
-- [Troubleshooting OpenWrt/Useful Commands and Tools](rsc/troubleshooting.md)
-- [Firmware](#firmware)
+- [Installing Debian (6.7)](#installing-debian-based-on-67-msm8916-mainline)
+- [Installing Debian (5.15)](#installing-debian-based-on-515-msm8916-mainline)
+- [Troubleshooting](rsc/troubleshooting.md)
 - [Recovery](#recovery)
 - [References](#references)
 - [License](#license)
@@ -63,13 +63,17 @@ To enable EDL mode on your device, execute the following command:
 
 `adb reboot edl`
 
-Alternatively, for a more hands-on approach, you can short the D+ and GND on the USB before connecting it to your computer. Once the device is in EDL mode, execute the following commands to create a backup:
+Alternatively, for a more hands-on approach, you can short the D+ and GND on the USB or the 2 pads on the board before connecting it to your computer. Once the device is in EDL mode, execute the following commands to create a full backup:
 
 `python3 edl rf {your_filename}.bin`
 
 To restore simply run:
 
 `python3 edl wf {your_filename}.bin`
+
+for individual backup:
+
+`python3 edl rl {your_foldername} --genxml`
 
 You can then use tools such as PowerISO to view the different partitions of the image.
 
@@ -103,6 +107,14 @@ reboot
 As the device is running Android, we can see the display as if it has a screen using a tool named adbcontrol.
 
 - [adbcontrol](files/adbcontrol.zip)
+
+By default a screen timeout which results to a black screen when no activity is present to bypass this we need to run:
+
+```bash 
+adb shell settings put system screen_off_timeout 2147483647
+
+adb shell input keyevent 26 # Simulate key press to wake up
+```
 
 Steps:
 
@@ -146,7 +158,7 @@ You can then start to customization under the assets folder
 > [!NOTE]  
 > Don't forget to change the `versionCode` and `versionName` in the apktool.yml
 
-Recompile apkn(If asked for a passphrase type `android`):
+Recompile apk(If asked for a passphrase type `android`):
 
 `java -jar apktool.jar b -o unsigned.apk {APP_NAME}`
 
@@ -159,13 +171,13 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ./platform.keys
 
 Install apk:
 
-`adb install -r aligned.apk `
+`adb install -r aligned.apk`
 
 ## Installing OpenWrt
 
 To install openwrt on the device you will need
 
-- [OpenWRT UZ801_v3.2](files/openwrt-UZ801_v3.2.tar.gz)
+- [OpenWRT UZ801_v3.2](files/openwrt-UZ801_v3.2.7z)
 
 - fsc.bin, fsg.bin modemst1.bin, modemst2.bin from your backup
 
@@ -190,25 +202,30 @@ python3 edl w modemst2 modemst2.bin
 python3 edl reset
 ```
 
-## Installing Debian
+## Installing Debian (Based on 6.7 msm8916 mainline)
 
 1. Download the file using: `wget https://download.wvthoog.nlopenstick-uz801-v3.0.zip`.
 2. Extract the zip file.
-3. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
-4. Wait for the script to execute.
-5. Done, All basic functions should now work. Configure the device for your chosen use case.
+3. Execute `adb reboot-bootloader`
+4. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
+5. Wait for the script to execute.
+6. If all goes well All basic functions should now work. Configure the device for your chosen use case.
 
 For more information visit [Wim van 't Hoog](https://wvthoog.nl/openstick/) blog
 
-## Firmware
+## Installing Debian (Based on 5.15 msm8916 mainline)
 
-Below, I’ve provided a stock dump of my firmware (Philippines version). Please note that flashing this firmware is at your own risk. The board number for this dump is FY_UZ801_V3.2. You might also need to replace the modem firmware with yours for it to work in your region.
-
-- [UZ801_V3.2 Stock ROM](https://drive.google.com/file/d/18SiujpzU4W2YBRhcZdck5IQEYAyBjcZi/view?usp=sharing)
+1. Download the file from [here](http://www-cs-students.stanford.edu/~kaan/test.html).
+2. Unzip the 7zip file.
+3. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
+4. Wait for the script to finish.
+5. If all goes well, you can then execute `adb shell` or `ssh user@192.168.68.1`. The password is: **1**.
+6. Now go back to the root dir and run `./misc.sh`
+7. All basic functions should now work. Configure the device for your chosen use case.
 
 ## Recovery
 
-In case you bricked your device and cannot access EDL just short the pins below
+In case you bricked your device and cannot access EDL, just short the pins below and follow the [restore guide](#firmware-dump-and-restore).
 
 ![alt text](img/Uz801_board.jpg "UZ801 Board")
 
@@ -216,7 +233,7 @@ In case you bricked your device and cannot access EDL just short the pins below
 
 This project references the following resources:
 
-- [Wim van 't Hoog](https://wvthoog.nl/openstick/) - For Debian Kernel build and instructions.
+- [Wim van 't Hoog](https://wvthoog.nl/openstick/) - For Debian build and instructions.
 
 - [ddscentral](https://github.com/ddscentral) - For Debian build and instructions.
 
