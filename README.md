@@ -182,7 +182,7 @@ Install apk:
 
 ## Installing Debian (Based on 6.7 msm8916 mainline)
 
-1. Download the file using: `wget https://download.wvthoog.nlopenstick-uz801-v3.0.zip`.
+1. Download the file using: `wget https://download.wvthoog.nl/openstick-uz801-v3.0.zip`.
 2. Extract the zip file.
 3. Execute `adb reboot-bootloader`
 4. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
