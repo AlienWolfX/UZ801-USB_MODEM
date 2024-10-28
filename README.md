@@ -42,7 +42,8 @@ The web UI is so poorly designed that simply changing the URL and calling `main.
 
 ## Initial
 
-Before doing anything to your USB dongle, you must first enable ADB (if it's not already enabled) by accessing this URL: [http://192.168.100.1/usbdebug.html](http://192.168.100.1/usbdebug.html).
+> [!IMPORTANT]  
+> Before doing anything to your USB dongle, you must first enable ADB (if it's not already enabled) by accessing this URL: [http://192.168.100.1/usbdebug.html](http://192.168.100.1/usbdebug.html).
 
 You need to have:
 
@@ -79,6 +80,9 @@ You can then use tools such as PowerISO to view the different partitions of the 
 
 ## Getting Root
 
+> [!NOTE]  
+> Some devices have root access out of the box. Before proceeding, kindly check if yours does.
+
 To gain root access, you need to install SuperSU on the USB dongle. Ensure you have the following files:
 
 - [SuperSU](files/SR5-SuperSU-v2.82-SR5-20171001224502.zip)
@@ -104,6 +108,11 @@ reboot
 
 ## View Device Display
 
+> [!NOTE]
+> You need to modify the config file accordingly  
+> `adbCommand = {LOCATION_OF_ADB_EXE}`
+> `localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}`
+
 As the device is running Android, we can see the display as if it has a screen using a tool named adbcontrol.
 
 - [adbcontrol](files/adbcontrol.zip)
@@ -125,18 +134,11 @@ modify config.properties by pointing to the appropriate directories
 java -jar adbcontrol.jar
 ```
 
-Note:
-
-```bash
-adbCommand = {LOCATION_OF_ADB_EXE}
-localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}
-```
-
 ## Modifying Web UI
 
 Thanks to this wonderful and well written guide from [here](https://www.blinkenlights.ch/ccms/posts/aliexpress-lte-2/) we can now modify the web ui
 
-First and foremost we need to identify the correct apk file some version of this dongle comes with the Jetty2m.apk and MifiService.apk in my case I have the MifiService.apk which was located in `/system/priv-app/MifiService.apk` I then pull the packed using `adb pull /system/priv-app/MifiService.apk` to get the apk package here are some of the steps from the instructions above:
+First and foremost we need to identify the correct apk file some version of this dongle comes with the Jetty2m.apk and MifiService.apk in my case the MifiService.apk was located in `/system/priv-app/MifiService.apk` I then pull the apk using `adb pull /system/priv-app/MifiService.apk`
 
 Fetch test-keys:
 
@@ -175,32 +177,8 @@ Install apk:
 
 ## Installing OpenWrt
 
-To install openwrt on the device you will need
-
-- [OpenWRT UZ801_v3.2](files/openwrt-UZ801_v3.2.7z)
-
-- fsc.bin, fsg.bin modemst1.bin, modemst2.bin from your backup
-
-Steps
-
-```bash
-adb shell reboot edl
-
-python3 edl wf {OPENWRT FILE}
-
-python3 edl reset
-
-adb reboot-bootloader
-
-fastboot oem reboot-edl
-
-python3 edl w fsc fsc.bin
-python3 edl w fsg fsg.bin
-python3 edl w modemst1 modemst1.bin
-python3 edl w modemst2 modemst2.bin
-
-python3 edl reset
-```
+> [!CAUTION]
+> **REMOVED** The OpenWRT distributed online is buggy and does not have the loop overlay responsible for saving configurations. Additionally, the current build I'm working on doesn't boot; it only blinks red.
 
 ## Installing Debian (Based on 6.7 msm8916 mainline)
 
