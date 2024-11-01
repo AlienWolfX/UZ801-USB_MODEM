@@ -42,6 +42,9 @@ The web UI is so poorly designed that simply changing the URL and calling `main.
 
 ## Initial
 
+> [!WARNING]
+> I just want to clarify that I'm not responsible if something goes wrong and the device gets bricked. Please proceed at your own risk and make sure to back up your data before attempting any modifications
+
 > [!IMPORTANT]  
 > Before doing anything to your USB dongle, you must first enable ADB (if it's not already enabled) by accessing this URL: [http://192.168.100.1/usbdebug.html](http://192.168.100.1/usbdebug.html).
 
@@ -56,7 +59,7 @@ If you are using Windows, you must install the following:
 - [ADB Platform Tools](https://gist.github.com/ifiokjr/b70882d3f1182ed48ec7eefa5c93a740)
 - [Zadig](https://zadig.akeo.ie/)
 
-On Windows, you might encounter this error: `NotImplementedError: Operation not supported or unimplemented on this platform`. One way to fix this is by uninstalling the QDLoader 9008 Driver and replacing it with Zadig WinUSB[⁽¹⁾](https://github.com/bkerler/edl/issues/349#issuecomment-2060152724).
+On Windows, If you intend to use edl you might encounter this error: `NotImplementedError: Operation not supported or unimplemented on this platform`. One way to fix this is by uninstalling the QDLoader 9008 Driver and replacing it with Zadig WinUSB[⁽¹⁾](https://github.com/bkerler/edl/issues/349#issuecomment-2060152724).
 
 ## Firmware Dump and Restore
 
@@ -76,7 +79,7 @@ for individual backup:
 
 `python3 edl rl {your_foldername} --genxml`
 
-You can then use tools such as PowerISO to view the different partitions of the image.
+You can then use tools such as PowerISO to view the different partitions of the dump.
 
 ## Getting Root
 
@@ -102,43 +105,44 @@ The device may take some time to restart adb. Please be patient. Once adb is up 
 
 ```bash
 adb shell
+
 twrp install /sdcard/SR5-SuperSU-v2.82-SR5-20171001224502.zip
+
 reboot
 ```
 
 ## View Device Display
 
-> [!NOTE]
-> You need to modify the config file accordingly  
-> `adbCommand = {LOCATION_OF_ADB_EXE}`
-> `localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}`
-
-As the device is running Android, we can see the display as if it has a screen using a tool named adbcontrol.
+We can use adbcontrol to see what's going on with the device.
 
 - [adbcontrol](files/adbcontrol.zip)
 
-By default a screen timeout which results to a black screen when no activity is present to bypass this we need to run:
+> [!NOTE]
+> You need to modify the config.properties file accordingly  
+> `adbCommand = {LOCATION_OF_ADB_EXE}`
+> `localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}`
+
+By default a screen timeout which results to a black screen when no activity is present, to bypass this we need to run:
 
 ```bash 
 adb shell settings put system screen_off_timeout 2147483647
 
-adb shell input keyevent 26 # Simulate key press to wake up
+adb shell input keyevent 26
 ```
 
 Steps:
 
 ```bash
 extract adbcontrol.zip
+
 cd adbcontrol
-modify config.properties by pointing to the appropriate directories
+
 java -jar adbcontrol.jar
 ```
 
 ## Modifying Web UI
 
-Thanks to this wonderful and well written guide from [here](https://www.blinkenlights.ch/ccms/posts/aliexpress-lte-2/) we can now modify the web ui
-
-First and foremost we need to identify the correct apk file some version of this dongle comes with the Jetty2m.apk and MifiService.apk in my case the MifiService.apk was located in `/system/priv-app/MifiService.apk` I then pull the apk using `adb pull /system/priv-app/MifiService.apk`
+First and foremost we need to identify the correct apk file some version of this dongle comes with the Jetty2m.apk and MifiService.apk in my case the MifiService.apk was located in `/system/priv-app/MifiService.apk` I then pulled the apk using `adb pull /system/priv-app/MifiService.apk`
 
 Fetch test-keys:
 
@@ -177,8 +181,8 @@ Install apk:
 
 ## Installing OpenWrt
 
-> [!CAUTION]
-> **REMOVED** The OpenWRT distributed online is buggy and does not have the loop overlay responsible for saving configurations. Additionally, the current build I'm working on doesn't boot; it only blinks red.
+> [!NOTE]
+> Comming soon....
 
 ## Installing Debian (Based on 6.7 msm8916 mainline)
 
@@ -193,13 +197,8 @@ For more information visit [Wim van 't Hoog](https://wvthoog.nl/openstick/) blog
 
 ## Installing Debian (Based on 5.15 msm8916 mainline)
 
-1. Download the file from [here](http://www-cs-students.stanford.edu/~kaan/test.html).
-2. Unzip the 7zip file.
-3. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
-4. Wait for the script to finish.
-5. If all goes well, you can then execute `adb shell` or `ssh user@192.168.68.1`. The password is: **1**.
-6. Now go back to the root dir and run `./misc.sh`
-7. All basic functions should now work. Configure the device for your chosen use case.
+> [!NOTE]
+> To be updated
 
 ## Recovery
 
@@ -220,6 +219,8 @@ This project references the following resources:
 - [edl](https://github.com/bkerler/edl) - Primary tool for dumping the Original firmware
 
 - [adrian-bl](https://github.com/adrian-bl) - Instruction for modifying Web UI
+
+- [BlinkenLights](https://www.blinkenlights.ch/ccms/posts/aliexpress-lte-2/)
 
 These resources have been instrumental in the creation of this project.
 
