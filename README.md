@@ -83,7 +83,7 @@ You can then use tools such as PowerISO to view the different partitions of the 
 
 ## Getting Root
 
-> [!NOTE]  
+> [!IMPORTANT]  
 > Some devices have root access out of the box. Before proceeding, kindly check if yours does.
 
 To gain root access, you need to install SuperSU on the USB dongle. Ensure you have the following files:
@@ -117,7 +117,7 @@ We can use adbcontrol to see what's going on with the device.
 
 - [adbcontrol](files/adbcontrol.zip)
 
-> [!NOTE]
+> [!TIP]
 > You need to modify the config.properties file accordingly  
 > `adbCommand = {LOCATION_OF_ADB_EXE}`
 > `localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}`
@@ -161,7 +161,7 @@ Decompile apk:
 
 You can then start to customization under the assets folder
 
-> [!NOTE]  
+> [!TIP]  
 > Don't forget to change the `versionCode` and `versionName` in the apktool.yml
 
 Recompile apk(If asked for a passphrase type `android`):
@@ -219,8 +219,6 @@ This project references the following resources:
 - [edl](https://github.com/bkerler/edl) - Primary tool for dumping the Original firmware
 
 - [adrian-bl](https://github.com/adrian-bl) - Instruction for modifying Web UI
-
-- [BlinkenLights](https://www.blinkenlights.ch/ccms/posts/aliexpress-lte-2/)
 
 These resources have been instrumental in the creation of this project.
 
