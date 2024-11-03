@@ -88,8 +88,8 @@ You can then use tools such as PowerISO to view the different partitions of the 
 
 To gain root access, you need to install SuperSU on the USB dongle. Ensure you have the following files:
 
-- [SuperSU](files/SR5-SuperSU-v2.82-SR5-20171001224502.zip)
-- [TWRP](files/twrp-3.1.1-0-seed.img)
+- [SuperSU](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/SR5-SuperSU-v2.82-SR5-20171001224502.zip)
+- [TWRP](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/twrp-3.1.1-0-seed.img)
 
 After obtaining the necessary files, open a new terminal and execute the following commands:
 
@@ -115,7 +115,7 @@ reboot
 
 We can use adbcontrol to see what's going on with the device.
 
-- [adbcontrol](files/adbcontrol.zip)
+- [adbcontrol](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/adbcontrol.zip)
 
 > [!TIP]
 > You need to modify the config.properties file accordingly  
@@ -181,8 +181,11 @@ Install apk:
 
 ## Installing OpenWrt
 
-> [!NOTE]
-> Comming soon....
+1. Download `openwrt-UZ801.tar.xz` from releases
+2. Extract the compressed file with `tar xf openwrt-UZ801.tar.xz`.
+3. cd OpenWRT-UZ801.
+4. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
+5. If all goes well you can now see a constant red light with a blinking blue light.
 
 ## Installing Debian (Based on 6.7 msm8916 mainline)
 
