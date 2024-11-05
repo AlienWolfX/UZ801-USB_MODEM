@@ -26,18 +26,18 @@
 
 A couple of months ago, I purchased this 4G LTE USB Dongle from Shopee for around 300+ PHP. Out of curiosity, I searched the internet to see if there was a way to modify the horrible web UI of the device. Here are some images of the device along with the board and it's chips.
 
-| ![front](img/front.jpg "front")    | ![back](img/back.jpg "back")       |
+| ![front](https://i.ibb.co/55fNj7D/front.jpg "front")    | ![back](https://i.ibb.co/2s72SLL/back.jpg "back")       |
 | ---------------------------------- | ---------------------------------- |
-| ![board1](img/board1.jpg "board1") | ![board2](img/board2.jpg "board2") |
-| ![front](img/cpu.jpg "front")      | ![back](img/storage.jpg "back")    |
-| ![board1](img/soc1.jpg "board1")   | ![board2](img/soc2.jpg "board2")   |
-| ![front](img/soc3.jpg "front")     |                                    |
+| ![board1](https://i.ibb.co/5vZXKMQ/board1.jpg "board1") | ![board2](https://i.ibb.co/1Z8WZq0/board2.jpg "board2") |
+| ![front](https://i.ibb.co/sbChyH9/cpu.jpg "front")      | ![back](https://i.ibb.co/Z8mh33d/storage.jpg "back")    |
+| ![board1](https://i.ibb.co/jTwXYQ8/soc1.jpg "board1")   | ![board2](https://i.ibb.co/GWfPq4M/soc2.jpg "board2")   |
+| ![front](https://i.ibb.co/dQ82vyz/soc3.jpg "front")     |                                    |
 
 The device heart of the dongle is a MSM8916 which is running a stripped-down version of Android 4.4.4 KitKat, the android setup restricts the use of the additional two CPU cores. I believe this is to prevent the device from overheating.
 
 The web UI is so poorly designed that simply changing the URL and calling `main.html` will take you to the main page:
 
-![WTF?](img/horrible_authentication.gif)
+![WTF?](https://i.ibb.co/NYnHgC1/horrible_authentication.gif)
 
 
 ## Initial
@@ -181,11 +181,15 @@ Install apk:
 
 ## Installing OpenWrt
 
+> [!IMPORTANT]
+> Current OpenWRT firmware use the mcfg_sw.mbn located under ***MODEM_PR\MCFG\CONFIGS\MCFG_SW\GENERIC\COMMON\DEFAULT\DEFAULT***. I haven't tested it if it works
+> across different regions, If you can't get signal with yours kindly refer to  [Changing Region](rsc/troubleshooting.md#changing-modem-region)
+
 1. Download `openwrt-UZ801.tar.xz` from releases
 2. Extract the compressed file with `tar xf openwrt-UZ801.tar.xz`.
 3. cd OpenWRT-UZ801.
 4. For Linux, run `./flash.sh`; for Windows, run `./flash.bat`.
-5. If all goes well you can now see a constant red light with a blinking blue light.
+5. If all goes well you can now see a constant blinking red and blue light.
 
 ## Installing Debian (Based on 6.7 msm8916 mainline)
 
@@ -222,6 +226,8 @@ This project references the following resources:
 - [edl](https://github.com/bkerler/edl) - Primary tool for dumping the Original firmware
 
 - [adrian-bl](https://github.com/adrian-bl) - Instruction for modifying Web UI
+
+- [HandsomeYingyan](https://github.com/HandsomeYingyan) - For HandsomeMod source code
 
 These resources have been instrumental in the creation of this project.
 

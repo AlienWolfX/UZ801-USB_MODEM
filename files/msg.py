@@ -1,4 +1,6 @@
 #!python3
+# Copyright AlienWolfX
+
 import os
 import re
 import sys
@@ -50,15 +52,6 @@ def send_all():
     for i in unknown:
         send_msg(i)
 
-def forward_msg():
-    for i in recv:
-        p=os.popen('mmcli -m 0 -s '+str(i))
-        res = smtp.mail(p.read())
-        if res:
-            print('Success:',i)
-        else:
-            print('Failed:',i)
-            
 def view_msg():
     p = os.popen('mmcli -m 0 --messaging-list-sms')
     output = p.read()
@@ -96,13 +89,10 @@ if len(cmd) > 1:
         clean_sent()
         clean_unknown()
         clean_recv()
-    elif cmd[1] == 'forward':
-        scan_local_msg()
-        forward_msg()
     elif cmd[1] == 'version':
-        print('UZ801 SMS Tool v1.2.0')
+        print('UZ801 SMS Tool v1.0.0')
         print('Modified by AlienWolfX')
 else:
     print('Usage: python3 msg.py [command]')
     print('Available Commands')
-    print(' *add\n *send\n *view\n *clean\n *forward')
+    print(' *add\n *send\n *view\n *clean')
