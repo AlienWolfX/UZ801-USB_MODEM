@@ -60,6 +60,9 @@ Supported Bands (According to `mmcli`):
 > [!WARNING]
 > I just want to clarify that I'm not responsible if something goes wrong and the device gets bricked. Please proceed at your own risk and make sure to back up your data before attempting any modifications
 
+> [!CAUTION]
+> Using Miko tools for firmware dumping, whether via xml or full emmc block, often results in a corrupted dump (based on my testing). Therefore, I advise you to take multiple dumps, not just with Miko tools, but also with EDL.
+
 > [!IMPORTANT]  
 > Before doing anything to your USB dongle, you must first enable ADB (if it's not already enabled) by accessing this URL: [http://192.168.100.1/usbdebug.html](http://192.168.100.1/usbdebug.html).
 
