@@ -226,7 +226,7 @@ For more information visit [Wim van 't Hoog](https://wvthoog.nl/openstick/) blog
 
 In case you bricked your device and cannot access EDL, just short the pins below and follow the [restore guide](#firmware-dump-and-restore).
 
-![alt text](img/Uz801_board.jpg "UZ801 Board")
+![alt text](https://wiki.postmarketos.org/images/0/00/Uz801_board.jpg "UZ801 Board")
 
 ## References
 
