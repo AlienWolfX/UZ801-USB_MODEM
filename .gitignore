@@ -6,3 +6,5 @@ misc/*
 www/*
 build/*
 *.apk
+
+scripts/*

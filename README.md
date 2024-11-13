@@ -39,7 +39,13 @@ The web UI is so poorly designed that simply changing the URL and calling `main.
 
 ![WTF?](https://i.ibb.co/NYnHgC1/horrible_authentication.gif)
 
-Supported Bands (According to `mmcli`):
+> [!WARNING]
+> Location service is enabled by default!!
+
+## Device Specs
+
+**Supported Bands** (According to `mmcli`):
+<details>
 
 | Band Type | Band Number | Frequency (MHz) |
 |-----------|-------------|-----------------|
@@ -54,6 +60,81 @@ Supported Bands (According to `mmcli`):
 | EUTRAN    | 38          | 2600 TDD        |
 | EUTRAN    | 40          | 2300 TDD        |
 | EUTRAN    | 41          | 2500 TDD        |
+
+</details>
+
+**CPUINFO**
+<details>
+
+``` bash
+processor       : 0
+model name      : ARMv7 Processor rev 0 (v7l)
+BogoMIPS        : 38.40
+Features        : swp half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant     : 0x0
+CPU part        : 0xd03
+CPU revision    : 0
+
+processor       : 1
+model name      : ARMv7 Processor rev 0 (v7l)
+BogoMIPS        : 38.40
+Features        : swp half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant     : 0x0
+CPU part        : 0xd03
+CPU revision    : 0
+
+Hardware        : Qualcomm Technologies, Inc MSM8916
+Revision        : 0000
+Serial          : 0000000000000000
+Processor       : ARMv7 Processor rev 0 (v7l)
+```
+
+</details>
+
+**MEMINFO**
+<details>
+
+``` bash
+MemTotal:         397824 kB
+MemFree:           53692 kB
+Buffers:            1720 kB
+Cached:            68792 kB
+SwapCached:         3156 kB
+Active:            92836 kB
+Inactive:         106204 kB
+Active(anon):      62516 kB
+Inactive(anon):    67424 kB
+Active(file):      30320 kB
+Inactive(file):    38780 kB
+Unevictable:        1136 kB
+Mlocked:               0 kB
+SwapTotal:        196604 kB
+SwapFree:         180944 kB
+Dirty:                28 kB
+Writeback:             0 kB
+AnonPages:        126840 kB
+Mapped:            36980 kB
+Shmem:               276 kB
+Slab:              31164 kB
+SReclaimable:       9572 kB
+SUnreclaim:        21592 kB
+KernelStack:        5040 kB
+PageTables:         5428 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      395516 kB
+Committed_AS:    4596648 kB
+VmallocTotal:     499712 kB
+VmallocUsed:       49008 kB
+VmallocChunk:     309276 kB
+```
+
+</details>
 
 ## Initial
 
@@ -231,6 +312,10 @@ In case you bricked your device and cannot access EDL, just short the pins below
 
 ![alt text](https://wiki.postmarketos.org/images/0/00/Uz801_board.jpg "UZ801 Board")
 
+#### IMEI Recovery
+
+Incase you lost your IMEI during recovery process you can fix it using `modem_at AT+WRIMEI={YOUR_IMEI}`
+
 ## References
 
 This project references the following resources:
@@ -239,7 +324,7 @@ This project references the following resources:
 
 - [ddscentral](https://github.com/ddscentral) - For Debian build and instructions.
 
-- [postmarketOS](<https://wiki.postmarketos.org/wiki/Zhihe_series_LTE_dongles_(generic-zhihe)>) - Instructions and Board pinout image
+- [postmarketOS](<https://wiki.postmarketos.org/wiki/Zhihe_series_LTE_dongles_(generic-zhihe)>) - Information and Board pinout image
 
 - [edl](https://github.com/bkerler/edl) - Primary tool for dumping the Original firmware
 
