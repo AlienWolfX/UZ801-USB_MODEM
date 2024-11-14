@@ -24,7 +24,7 @@
 
 ## Introduction
 
-A couple of months ago, I purchased this 4G LTE USB Dongle from Shopee for around 300+ PHP. Out of curiosity, I searched the internet to see if there was a way to modify the horrible web UI of the device. Here are some images of the device along with the board and it's chips.
+A couple of months ago, I purchased this 4G LTE USB dongle from Shopee for around 300+ PHP. Out of curiosity, I searched the internet to see if there was a way to modify the horrible web UI of the device. Here are some images of the device along with the board and its chips.
 
 | ![front](https://i.ibb.co/55fNj7D/front.jpg "front")    | ![back](https://i.ibb.co/2s72SLL/back.jpg "back")       |
 |---------------------------------------------------------|---------------------------------------------------------|
@@ -33,14 +33,11 @@ A couple of months ago, I purchased this 4G LTE USB Dongle from Shopee for aroun
 | ![board1](https://i.ibb.co/jTwXYQ8/soc1.jpg "board1")   | ![board2](https://i.ibb.co/GWfPq4M/soc2.jpg "board2")   |
 | ![front](https://i.ibb.co/dQ82vyz/soc3.jpg "front")     |                                                         |
 
-The device heart of the dongle is a MSM8916 which is running a stripped-down version of Android 4.4.4 KitKat, the android setup restricts the use of the additional two CPU cores. I believe this is to prevent the device from overheating.
+The heart of the dongle is an MSM8916, running a stripped-down version of Android 4.4.4 KitKat. Interestingly, the setup restricts the use of the additional two CPU cores, likely to prevent the device from overheating.
 
-The web UI is so poorly designed that simply changing the URL and calling `main.html` will take you to the main page:
+The web UI is so poorly designed that you can bypass it entirely by simply changing the URL and calling ***main.html*** to access the main page.
 
 ![WTF?](https://i.ibb.co/NYnHgC1/horrible_authentication.gif)
-
-> [!WARNING]
-> Location service is enabled by default!!
 
 ## Device Specs
 
@@ -241,7 +238,7 @@ java -jar adbcontrol.jar
 
 ## Modifying Web UI
 
-First and foremost we need to identify the correct apk file some version of this dongle comes with the Jetty2m.apk and MifiService.apk in my case the MifiService.apk was located in `/system/priv-app/MifiService.apk` I then pulled the apk using `adb pull /system/priv-app/MifiService.apk`
+First and foremost, we need to identify the correct APK file. Some versions of this dongle come with Jetty2m.apk and MifiService.apk. In my case, the MifiService.apk was located in **/system/priv-app/MifiService.apk**. I then pulled the APK using the command `adb pull /system/priv-app/MifiService.apk`
 
 Fetch test-keys:
 
@@ -314,7 +311,7 @@ In case you bricked your device and cannot access EDL, just short the pins below
 
 #### IMEI Recovery
 
-Incase you lost your IMEI during recovery process you can fix it using `modem_at AT+WRIMEI={YOUR_IMEI}`
+Incase you lost your IMEI you can fix it using `modem_at AT+WRIMEI={YOUR_IMEI}`
 
 ## References
 
