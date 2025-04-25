@@ -1,7 +1,7 @@
 # UZ801 Analysis
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
- 
+
 <details>
 
 <summary>Table of Contents</summary>
@@ -27,7 +27,7 @@
 A couple of months ago, I purchased this 4G LTE USB dongle from Shopee for around 300+ PHP. Out of curiosity, I searched the internet to see if there was a way to modify the horrible web UI of the device. Here are some images of the device along with the board and its chips.
 
 | ![front](https://i.ibb.co/55fNj7D/front.jpg "front")    | ![back](https://i.ibb.co/2s72SLL/back.jpg "back")       |
-|---------------------------------------------------------|---------------------------------------------------------|
+| ------------------------------------------------------- | ------------------------------------------------------- |
 | ![board1](https://i.ibb.co/5vZXKMQ/board1.jpg "board1") | ![board2](https://i.ibb.co/1Z8WZq0/board2.jpg "board2") |
 | ![front](https://i.ibb.co/sbChyH9/cpu.jpg "front")      | ![back](https://i.ibb.co/Z8mh33d/storage.jpg "back")    |
 | ![board1](https://i.ibb.co/jTwXYQ8/soc1.jpg "board1")   | ![board2](https://i.ibb.co/GWfPq4M/soc2.jpg "board2")   |
@@ -35,17 +35,18 @@ A couple of months ago, I purchased this 4G LTE USB dongle from Shopee for aroun
 
 The heart of the dongle is an MSM8916, running a stripped-down version of Android 4.4.4 KitKat. Interestingly, the setup restricts the use of the additional two CPU cores, likely to prevent the device from overheating.
 
-The web UI is so poorly designed that you can bypass it entirely by simply changing the URL and calling ***main.html*** to access the main page.
+The web UI is so poorly designed that you can bypass it entirely by simply changing the URL and calling **_main.html_** to access the main page.
 
 ![WTF?](https://i.ibb.co/NYnHgC1/horrible_authentication.gif)
 
 ## Device Specs
 
 **Supported Bands** (According to `mmcli`):
+
 <details>
 
 | Band Type | Band Number | Frequency (MHz) |
-|-----------|-------------|-----------------|
+| --------- | ----------- | --------------- |
 | UTRAN     | 1           | 2100            |
 | UTRAN     | 8           | 900             |
 | EUTRAN    | 1           | 2100            |
@@ -61,9 +62,10 @@ The web UI is so poorly designed that you can bypass it entirely by simply chang
 </details>
 
 **CPUINFO**
+
 <details>
 
-``` bash
+```bash
 processor       : 0
 model name      : ARMv7 Processor rev 0 (v7l)
 BogoMIPS        : 38.40
@@ -93,9 +95,10 @@ Processor       : ARMv7 Processor rev 0 (v7l)
 </details>
 
 **MEMINFO**
+
 <details>
 
-``` bash
+```bash
 MemTotal:         397824 kB
 MemFree:           53692 kB
 Buffers:            1720 kB
@@ -136,10 +139,10 @@ VmallocChunk:     309276 kB
 ## Initial
 
 > [!WARNING]
-> I just want to clarify that I'm not responsible if something goes wrong and the device gets bricked. Please proceed at your own risk and make sure to back up your data before attempting any modifications
+> I want to clarify that I'm not responsible if something goes wrong and the device gets bricked. Please proceed at your own risk and make sure to back up your data before attempting any modifications.
 
 > [!CAUTION]
-> Using Miko tools for firmware dumping, whether via xml or full emmc block, often results in a corrupted dump (based on my testing). Therefore, I advise you to take multiple dumps, not just with Miko tools, but also with EDL.
+> Using Miko tools for firmware dumping, whether via XML or full eMMC block, often results in a corrupted dump (based on my testing). Therefore, I advise you to take multiple dumps, not just with Miko tools but also with EDL.
 
 > [!IMPORTANT]  
 > Before doing anything to your USB dongle, you must first enable ADB (if it's not already enabled) by accessing this URL: [http://192.168.100.1/usbdebug.html](http://192.168.100.1/usbdebug.html).
@@ -180,7 +183,7 @@ You can then use tools such as PowerISO to view the different partitions of the 
 ## Getting Root
 
 > [!IMPORTANT]  
-> Some devices have root access out of the box. Before proceeding, kindly check if yours does.
+> Some devices have root access out of the box. Please check if yours does before proceeding.
 
 To gain root access, you need to install SuperSU on the USB dongle. Ensure you have the following files:
 
@@ -209,18 +212,17 @@ reboot
 
 ## View Device Display
 
-We can use adbcontrol to see what's going on with the device.
+We can use adbcontrol to see what's happening with the device.
 
 - [adbcontrol](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/adbcontrol.zip)
 
 > [!TIP]
 > You need to modify the config.properties file accordingly  
-> `adbCommand = {LOCATION_OF_ADB_EXE}`
-> `localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}`
+> `adbCommand = {LOCATION_OF_ADB_EXE}` > `localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}`
 
-By default a screen timeout which results to a black screen when no activity is present, to bypass this we need to run:
+By default, there is a screen timeout which results in a black screen when no activity is present. To bypass this, we need to run:
 
-```bash 
+```bash
 adb shell settings put system screen_off_timeout 2147483647
 
 adb shell input keyevent 26
@@ -278,8 +280,8 @@ Install apk:
 ## Installing OpenWrt
 
 > [!IMPORTANT]
-> Current OpenWRT firmware use the mcfg_sw.mbn located under ***MODEM_PR\MCFG\CONFIGS\MCFG_SW\GENERIC\COMMON\DEFAULT\DEFAULT***. I haven't tested it if it works
-> across different regions, If you can't get signal with yours kindly refer to  [Changing Region](rsc/troubleshooting.md#changing-modem-region)
+> Current OpenWRT firmware uses the mcfg*sw.mbn located under \*\*\_MODEM_PR\MCFG\CONFIGS\MCFG_SW\GENERIC\COMMON\DEFAULT\DEFAULT*\*\*. I haven't tested if it works
+> across different regions. If you can't get a signal with yours, kindly refer to [Changing Region](rsc/troubleshooting.md#changing-modem-region).
 
 1. Download `openwrt-UZ801.tar.xz` from releases
 2. Extract the compressed file with `tar xf openwrt-UZ801.tar.xz`.
@@ -298,20 +300,13 @@ Install apk:
 
 For more information visit [Wim van 't Hoog](https://wvthoog.nl/openstick/) blog
 
-## Installing Debian (Based on 5.15 msm8916 mainline)
-
-> [!NOTE]
-> To be updated
-
 ## Recovery
 
-In case you bricked your device and cannot access EDL, just short the pins below and follow the [restore guide](#firmware-dump-and-restore).
+In case you brick your device and cannot access EDL, just short the pins below and follow the [restore guide](#firmware-dump-and-restore).
 
-![alt text](https://wiki.postmarketos.org/images/0/00/Uz801_board.jpg "UZ801 Board")
+### IMEI Recovery
 
-#### IMEI Recovery
-
-Incase you lost your IMEI you can fix it using `modem_at AT+WRIMEI={YOUR_IMEI}`
+In case you lose your IMEI, you can fix it using `modem_at AT+WRIMEI={YOUR_IMEI}`
 
 ## References
 
