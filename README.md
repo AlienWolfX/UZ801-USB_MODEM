@@ -305,13 +305,19 @@ Install apk:
 
 For more information visit [Wim van 't Hoog](https://wvthoog.nl/openstick/) blog
 
-## Recovery
+## Device Recovery
 
 In case you brick your device and cannot access EDL, just short the pins below and follow the [restore guide](#firmware-dump-and-restore).
 
-### IMEI Recovery
+![alt text](https://wiki.postmarketos.org/images/0/00/Uz801_board.jpg "UZ801 Board")
 
-In case you lose your IMEI, you can fix it using `modem_at AT+WRIMEI={YOUR_IMEI}`
+### Network Recovery (Experimental)
+
+In case you lost your IMEI and network configuration you can use [restoreNetwork.py](scripts/restoreNetwork.py)
+
+1. Run `python restoreNetwork.py`
+2. Enter your IMEI
+3. Wait for your device to reboot
 
 ## References
 
@@ -329,10 +335,10 @@ This project references the following resources:
 
 - [HandsomeYingyan](https://github.com/HandsomeYingyan) - For HandsomeMod source code
 
-These resources have been instrumental in the creation of this project.
+These resources have been instrumental in the creation of this documentation.
 
 ## License
 
 This repository is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-<p align="center">Copyright <b>AlienWolfX</b> 2024</p>
+<p align="center">Copyright <b>AlienWolfX</b> 2025</p>
