@@ -246,10 +246,15 @@ Fetch test-keys:
 
 ```bash
 git clone https://android.googlesource.com/platform/build
+
 cd build/target/product/security/
+
 openssl pkcs8 -inform DER -nocrypt -in platform.pk8 -out platform.pem
+
 openssl pkcs12 -export -in platform.x509.pem -inkey platform.pem -out platform.p12 -password pass:android -name testkey
+
 keytool -importkeystore -deststorepass android -destkeystore platform.keystore -srckeystore platform.p12 -srcstoretype PKCS12 -srcstorepass android
+
 mv platform.keystore {YOUR_WORK_DIR}
 ```
 
@@ -270,6 +275,7 @@ Zipalign:
 
 ```bash
 zipalign -v 4 unsigned.apk aligned.apk
+
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ./platform.keystore  aligned.apk testkey
 ```
 
@@ -280,8 +286,7 @@ Install apk:
 ## Installing OpenWrt
 
 > [!IMPORTANT]
-> Current OpenWRT firmware uses the mcfg*sw.mbn located under \*\*\_MODEM_PR\MCFG\CONFIGS\MCFG_SW\GENERIC\COMMON\DEFAULT\DEFAULT*\*\*. I haven't tested if it works
-> across different regions. If you can't get a signal with yours, kindly refer to [Changing Region](rsc/troubleshooting.md#changing-modem-region).
+> If you can't get a signal with yours, kindly refer to [Changing Region](rsc/troubleshooting.md#changing-modem-region).
 
 1. Download `openwrt-UZ801.tar.xz` from releases
 2. Extract the compressed file with `tar xf openwrt-UZ801.tar.xz`.
