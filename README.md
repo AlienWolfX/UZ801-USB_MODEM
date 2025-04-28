@@ -12,11 +12,12 @@
 - [Getting Root](#getting-root)
 - [View Device Display](#view-device-display)
 - [Modifying Web UI](#modifying-web-ui)
+- [Modifying IP](#changing-default-ip-address)
 - [Installing OpenWrt](#installing-openwrt)
 - [Installing Debian (6.7)](#installing-debian-based-on-67-msm8916-mainline)
-- [Installing Debian (5.15)](#installing-debian-based-on-515-msm8916-mainline)
 - [Troubleshooting](rsc/troubleshooting.md)
-- [Recovery](#recovery)
+- [Device Recovery](#device-recovery)
+- [IMEI Recovery](#imei-recovery)
 - [References](#references)
 - [License](#license)
 
@@ -163,7 +164,7 @@ On Windows, If you intend to use edl you might encounter this error: `NotImpleme
 ---
 
 > [!CAUTION]
-> Skipping this step may leave you searching the internet for solutions to fix lost IMEI and unknown network issues (which is nearly non-existent). So please be a good potato and create a complete firmware dump before proceeding.
+> Skipping this step may leave you searching the internet for solutions to fix lost IMEI and unknown network issues (which is nearly non-existent). So please be a good potato and create a complete firmware dump before modifying anything.
 
 ## Firmware Dump and Restore
 
@@ -380,7 +381,7 @@ adb reboot
 
 Credit: Originally documented by [tarokeitaro](https://github.com/AlienWolfX/UZ801-USB_MODEM/issues/11#issuecomment-2473418269)
 
-## Changing Region
+## Installing OpenWRT
 
 > [!IMPORTANT]
 > If you can't get a signal with yours, kindly refer to [Changing Region](rsc/troubleshooting.md#changing-modem-region).
