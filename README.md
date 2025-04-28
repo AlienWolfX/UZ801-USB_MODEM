@@ -33,7 +33,7 @@ A couple of months ago, I purchased this 4G LTE USB dongle from Shopee for aroun
 | ![board1](https://i.ibb.co/jTwXYQ8/soc1.jpg "board1")   | ![board2](https://i.ibb.co/GWfPq4M/soc2.jpg "board2")   |
 | ![front](https://i.ibb.co/dQ82vyz/soc3.jpg "front")     |                                                         |
 
-The heart of the dongle is an MSM8916, running a stripped-down version of Android 4.4.4 KitKat. Interestingly, the setup restricts the use of the additional two CPU cores, likely to prevent the device from overheating.
+The heart of the dongle is an MSM8916, running a stripped-down version of Android 4.4.4 KitKat. Interestingly, **the setup restricts the use of the additional two CPU cores, likely to prevent the device from overheating**.
 
 The web UI is so poorly designed that you can bypass it entirely by simply changing the URL and calling **_main.html_** to access the main page.
 
@@ -161,6 +161,9 @@ If you are using Windows, you must install the following:
 On Windows, If you intend to use edl you might encounter this error: `NotImplementedError: Operation not supported or unimplemented on this platform`. One way to fix this is by uninstalling the QDLoader 9008 Driver and replacing it with Zadig WinUSB[⁽¹⁾](https://github.com/bkerler/edl/issues/349#issuecomment-2060152724).
 
 ## Firmware Dump and Restore
+
+> [!CAUTION]
+> Skipping this step may leave you searching the internet for solutions to fix lost IMEI and unknown network issues (which is nearly non-existent). So please be a good potato and create a complete firmware dump before proceeding.
 
 To enable EDL mode on your device, execute the following command:
 
@@ -311,13 +314,9 @@ In case you brick your device and cannot access EDL, just short the pins below a
 
 ![alt text](https://wiki.postmarketos.org/images/0/00/Uz801_board.jpg "UZ801 Board")
 
-### Network Recovery (Experimental)
+### Network Recovery
 
-In case you lost your IMEI and network configuration you can use [restoreNetwork.py](scripts/restoreNetwork.py)
-
-1. Run `python restoreNetwork.py`
-2. Enter your IMEI
-3. Wait for your device to reboot
+While the IMEI can be recovered, the device's ability to connect to a network may be lost. This can be resolved by flashing the `modemst1` and `modemst2` partitions with firmware dumps from a working device in your region.
 
 ## References
 

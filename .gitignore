@@ -6,3 +6,4 @@ misc/*
 www/*
 build/*
 *.apk
+rsc/required_partitions/*
