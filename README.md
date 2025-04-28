@@ -167,6 +167,7 @@ On Windows, If you intend to use edl you might encounter this error: `NotImpleme
 
 ## Firmware Dump and Restore
 
+<details>
 To enable EDL mode on your device, execute the following command:
 
 `adb reboot edl`
@@ -185,7 +186,11 @@ for individual backup:
 
 You can then use tools such as PowerISO to view the different partitions of the dump.
 
+</details>
+
 ## Getting Root
+
+<details>
 
 > [!IMPORTANT]  
 > Some devices have root access out of the box. Please check if yours does before proceeding.
@@ -215,8 +220,11 @@ twrp install /sdcard/SR5-SuperSU-v2.82-SR5-20171001224502.zip
 reboot
 ```
 
+</details>
+
 ## View Device Display
 
+<details>
 We can use adbcontrol to see what's happening with the device.
 
 - [adbcontrol](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/adbcontrol.zip)
@@ -243,8 +251,11 @@ cd adbcontrol
 java -jar adbcontrol.jar
 ```
 
+</details>
+
 ## Modifying Web UI
 
+<details>
 First and foremost, we need to identify the correct APK file. Some versions of this dongle come with Jetty2m.apk and MifiService.apk. In my case, the MifiService.apk was located in **/system/priv-app/MifiService.apk**. I then pulled the APK using the command `adb pull /system/priv-app/MifiService.apk`
 
 Fetch test-keys:
@@ -288,7 +299,89 @@ Install apk:
 
 `adb install -r aligned.apk`
 
-## Installing OpenWrt
+</details>
+
+## Changing Default IP Address
+
+<details>
+<summary>1. Modify MifiService APK</summary>
+
+```bash
+# Download WebUI from Device
+adb pull /system/priv-app/MifiService.apk
+
+# Decompile APK
+java -jar apktool.jar d MifiService.apk -o MifiService
+
+# Edit IP addresses in decompiled files
+# Replace all instances of '192.168.100.' with your desired IP
+
+# Recompile (passphrase: android)
+java -jar apktool.jar b -o unsigned.apk MifiService
+
+# Sign and align
+zipalign -v 4 unsigned.apk aligned.apk
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ./platform.keystore aligned.apk testkey
+
+# Install modified APK
+adb install -r aligned.apk
+```
+
+</details>
+
+<details>
+<summary>2. Modify Init Service Script</summary>
+
+```bash
+# Mount system as writable
+adb shell mount -o rw,remount,rw /system
+
+# Edit init script
+adb shell busybox vi /system/bin/initmifiservice.sh
+
+# Replace all instances of '192.168.100.' with your desired IP
+```
+
+</details>
+
+<details>
+<summary>3. Modify System Services</summary>
+
+```bash
+# Pull services.jar
+adb pull /system/framework/services.jar
+
+# Decompile JAR
+java -jar apktool.jar d -o services services.jar
+
+# Edit IP addresses in decompiled files
+# Replace all instances of '192.168.100.' with your desired IP
+
+# Recompile JAR
+java -jar apktool.jar b -c -f -o services.jar services
+
+# Push modified JAR
+adb push services.jar /system/framework/
+
+# Remount system as read-only
+adb shell mount -o ro,remount,ro /system
+
+# Reboot device
+adb reboot
+```
+
+</details>
+
+> [!TIP]
+>
+> - Use VS Code's search and replace feature (Ctrl+H) to modify IP addresses
+> - Make sure to keep track of all modified files
+> - Create a backup before starting
+> - Test network connectivity after each step
+
+Credit: Originally documented by [tarokeitaro](https://github.com/AlienWolfX/UZ801-USB_MODEM/issues/11#issuecomment-2473418269)
+
+## Changing Region
 
 > [!IMPORTANT]
 > If you can't get a signal with yours, kindly refer to [Changing Region](rsc/troubleshooting.md#changing-modem-region).
