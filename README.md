@@ -190,11 +190,10 @@ You can then use tools such as PowerISO to view the different partitions of the 
 
 ## Getting Root
 
-<details>
-
 > [!IMPORTANT]  
 > Some devices have root access out of the box. Please check if yours does before proceeding.
 
+<details>
 To gain root access, you need to install SuperSU on the USB dongle. Ensure you have the following files:
 
 - [SuperSU](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/SR5-SuperSU-v2.82-SR5-20171001224502.zip)
