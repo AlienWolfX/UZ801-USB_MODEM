@@ -223,14 +223,14 @@ reboot
 
 ## View Device Display
 
+> [!TIP]
+> You need to modify the config.properties file accordingly  
+> `adbCommand = {LOCATION_OF_ADB_EXE}` > `localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}`
+
 <details>
 We can use adbcontrol to see what's happening with the device.
 
 - [adbcontrol](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/adbcontrol.zip)
-
-> [!TIP]
-> You need to modify the config.properties file accordingly  
-> `adbCommand = {LOCATION_OF_ADB_EXE}` > `localImageFilePath = {LOCATION_ON_YOUR_HOST_MACHINE}`
 
 By default, there is a screen timeout which results in a black screen when no activity is present. To bypass this, we need to run:
 
@@ -253,6 +253,9 @@ java -jar adbcontrol.jar
 </details>
 
 ## Modifying Web UI
+
+> [!TIP]  
+> Don't forget to change the `versionCode` and `versionName` in the apktool.yml
 
 <details>
 First and foremost, we need to identify the correct APK file. Some versions of this dongle come with Jetty2m.apk and MifiService.apk. In my case, the MifiService.apk was located in **/system/priv-app/MifiService.apk**. I then pulled the APK using the command `adb pull /system/priv-app/MifiService.apk`
@@ -278,9 +281,6 @@ Decompile apk:
 `java -jar apktool.jar d {APP_NAME}.apk -o {APP_NAME}`
 
 You can then start to customization under the assets folder
-
-> [!TIP]  
-> Don't forget to change the `versionCode` and `versionName` in the apktool.yml
 
 Recompile apk(If asked for a passphrase type `android`):
 
