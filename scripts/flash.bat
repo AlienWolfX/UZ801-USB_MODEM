@@ -4,10 +4,10 @@ echo        Flasher Tool
 echo https://github.com/AlienWolfX
 echo =============================
 
-fastboot flash fsc ../rsc/required_partitions/fsc.bin
-fastboot flash fsg ../rsc/required_partitions/fsg.bin
-fastboot flash modemst1 ../rsc/required_partitions/modemst1.bin
-fastboot flash modemst2 ../rsc/required_partitions/modemst2.bin
+fastboot flash fsc ../files/required_partitions/fsc.bin
+fastboot flash fsg ../files/required_partitions/fsg.bin
+fastboot flash modemst1 ../files/required_partitions/modemst1.bin
+fastboot flash modemst2 ../files/required_partitions/modemst2.bin
 echo Done.
 
 echo Rebooting to system..

@@ -160,10 +160,12 @@ If you are using Windows, you must install the following:
 
 On Windows, If you intend to use edl you might encounter this error: `NotImplementedError: Operation not supported or unimplemented on this platform`. One way to fix this is by uninstalling the QDLoader 9008 Driver and replacing it with Zadig WinUSB[⁽¹⁾](https://github.com/bkerler/edl/issues/349#issuecomment-2060152724).
 
-## Firmware Dump and Restore
+---
 
 > [!CAUTION]
 > Skipping this step may leave you searching the internet for solutions to fix lost IMEI and unknown network issues (which is nearly non-existent). So please be a good potato and create a complete firmware dump before proceeding.
+
+## Firmware Dump and Restore
 
 To enable EDL mode on your device, execute the following command:
 
@@ -314,9 +316,9 @@ In case you brick your device and cannot access EDL, just short the pins below a
 
 ![alt text](https://wiki.postmarketos.org/images/0/00/Uz801_board.jpg "UZ801 Board")
 
-### Network Recovery
+### IMEI Recovery
 
-While the IMEI can be recovered, the device's ability to connect to a network may be lost. This can be resolved by flashing the `modemst1` and `modemst2` partitions with firmware dumps from a working device in your region.
+While the IMEI can be recovered using `modem_at AT+WRIMEI="{YOUR_IMEI}"`, the device's ability to connect to a network may be lost. This can be resolved by flashing the `modemst1` and `modemst2` partitions with firmware dumps from a working device in your region.
 
 ## References
 

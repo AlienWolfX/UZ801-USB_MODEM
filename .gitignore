@@ -1,9 +1,11 @@
 files/adbcontrol/*
+files/required_partitions/*
 misc/*
 *.zip
+*.img
 .env/*
 .vscode/*
 www/*
 build/*
 *.apk
-rsc/required_partitions/*
+
