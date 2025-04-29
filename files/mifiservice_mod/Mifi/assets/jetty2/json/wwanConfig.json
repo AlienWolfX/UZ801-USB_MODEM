@@ -1,0 +1,13 @@
+{
+    "APN:" : "APN：",
+    "Name:" : "名&nbsp;&nbsp;&nbsp;&nbsp;称：",
+    "User:" : "用户名：",
+    "Password:" : "密&nbsp;&nbsp;&nbsp;&nbsp;码：",
+    "Auth:" : "加密方式：",
+    "None" : "无",
+    "APN Configuration" : "APN&nbsp;&nbsp;配&nbsp;置",
+    "Save Configuration" : "保存配置",
+    "Execute" : "激  活",
+    "APN Connection" : "APN&nbsp;&nbsp;连&nbsp;接",
+    "Default APN:" : "默认 APN："
+}

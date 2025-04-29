@@ -1,0 +1,16 @@
+{
+  "Help" : "帮  助",
+  "4G Info:" : "网络设置：",
+  "Admin UI password" : "密码管理说明",
+  "Admin User Interface (UI)" : "WEB&nbsp;界面管理说明",
+  "Advanced Settings:" : "高级设置：",
+  "Configure DHCP setting such as DHCP Settings, Current Devices." : "可以对DHCP服务及DHCP保留进行相关功能的设置。",
+  "Configure Wi-Fi setting such as security, SSID, and password." : "无线参数配置，例如安全性，SSID，密码等。",
+  "Default Wi-Fi password is 1234567890." : "默认的Wi-Fi密码是：1234567890。",
+  "DHCP Settings:" : "DHCP 设置：",
+  "Help Information" : "帮助信息",
+  "Shows 4G IP address, Subnet Mask, DNS." : "主要显示4G的IP地址，子网掩码，网关信息。",
+  "Shows device info, APN setting, SIM Information and resets the device to the factory default settings." : "显示设备信息、APN设置、SIM卡信息和恢复出厂设置。",
+  "Wi-Fi Settings:" : "无线设置：",
+  "Wi-Fi Password:" : "Wi-Fi 密码："
+}

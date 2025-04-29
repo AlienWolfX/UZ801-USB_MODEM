@@ -1,0 +1,17 @@
+{
+  "Home" : "首&nbsp;&nbsp;&nbsp;&nbsp;页",
+  "Network Select" : "网络选择",
+  "Wi-Fi" : "无线设置",
+  "Wi-Fi Setting" : "基本设置",
+  "Wi-Fi Security" : "安全设置",
+  "DHCP" : "DHCP设置",
+  "Advanced" : "高级设置",
+  "Device Information" : "设备信息",
+  "Device Operation" : "设备操作",
+  "APN Setting" : "APN设置",
+  "SIM Information" : "SIM卡信息",
+  "Modify Password" : "修改密码",
+  "Help" : "帮&nbsp;&nbsp;&nbsp;&nbsp;助",
+   "Copyright &copy; 2021-2022 All rights reserved." : "Copyright &copy; 2021-2022 所有版权.",
+   "MAC Address Filter":"MAC地址过滤"
+}

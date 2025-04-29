@@ -1,0 +1,18 @@
+{
+  "Internet Connection" : "网络连接",
+  "IP Address:" : "IP&nbsp;&nbsp;地址：",
+  "Received:" : "接&nbsp;&nbsp;收：",
+  "Mask:" : "掩&nbsp;&nbsp;码：",
+  "Transmitted:" : "发&nbsp;&nbsp;送：",
+  "DNS:" : "DNS",
+  "Wi-Fi Status" : "Wi-Fi&nbsp;状态",
+  "Network Name(SSID):" : "网络名称(SSID)：",
+  "IP Address:" : "IP&nbsp;&nbsp;地址：",
+  "Users:" : "用户数：",
+  "Network Connection" : "网络连接模式",
+  "Config Autoconnect:" : "是否自动连接：",
+  "Connect" : "连接",
+  "Disconnect" : "断开连接",
+  "Apply" : "应 用",
+  "Password:" : "密码:"
+}

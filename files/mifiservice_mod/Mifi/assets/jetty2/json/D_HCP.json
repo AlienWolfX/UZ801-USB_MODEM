@@ -1,0 +1,12 @@
+{
+  "Change DHCP Setting" : "修改 DHCP 设置",
+  "DHCP Setting" : "DHCP 设置",
+  "DHCP-IP" : "DHCP-IP地址",
+  "DHCP-DNS" : "DHCP-DNS",
+  "DHCP-Range" : "DHCP-变化范围",
+  "Current Devices" : "当前连接设备",
+  "Name" : "名&nbsp;称",
+  "Assigned IP" : "分配的&nbsp;IP",
+  "MAC" : "MAC地址",
+  "Media" : "连接方式"
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <!--support Chinese-->
+
+	<title>4G Modem</title> 
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/layer.css" />
+	<script src="./js/plugins/jquery.js" type="text/javascript"></script>
+	<script src="./js/utils/ajax.js" type="text/javascript"></script>
+	<script src="./js/plugins/json2.js" type="text/javascript"></script>
+	<script src="./js/plugins/layer.js" type="text/javascript"></script>
+	<script src="./js/utils/alert.js" type="text/javascript"></script>
+	<script src="./js/plugins/jquerysession.js" type="text/javascript"></script>
+	<script src="./js/utils/cookiesHandler.js" type="text/javascript"></script>
+	<script src="./js/utils/jsonHandler.js" type="text/javascript"></script>
+	
+	<style>
+		body {
+			/*width: 100% !important;*/
+			 
+            min-width: 956px;
+            padding-bottom: 30px;
+		}
+		#middle {
+			/*padding: 28px 0;*/
+			min-height:610px;
+			/*border: 1px solid #f7f7f7;*/
+			/*background: #ecf0f5;*/
+			/*_width: 368px;
+			_height:700px;*/
+			
+		}
+		div.block {
+			margin: 0 300px;
+			width: 368px;
+		}
+		div.content {
+			margin: 30px;
+			width: 308px;
+		}
+		div.content table {
+			width: 100%;
+		}
+		div.content table td {
+			padding: 5px 2px;
+		}
+		div.content table td * {
+			vertical-align: middle;
+		}
+	</style>
+
+</head>
+
+
+
+<body style="display:none;">
+		
+
+ 
+	  <div id="header" class="container">
+           <div id="manageBar" class="row">
+                <div id="manageContainer" class="col-xs-12 text-right">
+                		<td>
+		                    <select id="select" name="select" style= "margin-right: 25px;background-color: #8dc63f;">
+			                <option id="en" value="0" selected="selected">English</option>
+		                     <option id="zh" value="1">Chinese</option>
+		                     <option id="ru" value="2">Russion</option>
+			                </select>
+		               </td>                 
+                  <!--  <select id="language" class="marginright10" data-bind="options: languages, value: currentLan, optionsText: 'text', optionsValue: 'value', event:{ change: langChangeHandler}"></select>-->
+                </div>
+            </div>	
+       <div id="langLogoBar" class="row">
+            <div class="col-xs-4">
+                <a href="index.html"><img src="img/header.jpg"/></a>
+            </div>
+          
+      </div>  
+		<!-- <div style="float:left;padding-top: 10px;padding-bottom: 1px;height:110px;line-height:26px;background: url(../img/header_bg.png);margin-top: 0px;margin-bottom: 0px;">-->
+		<!-- <a href="index.html" style="float:left;padding-left:10px;height:30px;line-height:26px;"><img src="img/header.jpg" /></a>
+		 </div>	-->
+	  </div>            <!--end of header-->
+	
+
+	
+	<div id="middle" class="container login-page-bg">
+		<div class="block">
+				<div class="content" style="position: absolute; top:200px; left: 30%;  ">
+					<form name="gotomain" action="main.html" method="post">
+							<table id="frm" class="list">
+								<tbody>
+									<tr>
+										<td align="right" width="35%" lang="Username:">Username:</td>
+										<td width="65%"><input type="text" name="username" id="username" style="width:120px;"/></td>
+									</tr>
+									<tr>
+										<td align="right" lang="Password:">Password:</td>
+										<td><input type="password" name="password" id="password" style="width:120px;"/></td>
+									</tr>
+									<tr>
+<!--										<td align="right" width="35%" lang="Language:">Language:</td>
+										<td>
+											<select id="select" name="select" style="width:125px;">
+												<option id="en" value="0" selected="selected">English</option>
+												<option id="zh" value="1">Chinese</option>
+											</select>
+										</td>-->
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<input class="btn btn-primary" id="login" type="button" value="Login" lang='Login'/> &nbsp; 
+											<input class="btn btn-primary" type="reset" value="Reset" lang='Reset'/>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+          </form>
+				</div>  <!--end of content-->
+			</div>    <!--end of block-->
+	</div>         <!--end of middle-->
+
+
+	<div id="footerindex" class="container margin-top-5" style="border-top:1px solid #dddddd;margin-top: 10px;">
+	     <span lang="Copyright &copy; 2021-2024 All rights reserved.">Copyright &copy; 2021-2024 All rights reserved.</span>&nbsp;
+		<!--<p lang=""><font color="#014872">Copyright &copy; 2021-2022 All rights reserved.</font></p>-->
+	</div>
+
+</body>
+<script src="./js/index.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,51 @@
+<!--  <?xml version="1.0" encoding="UTF-8" ?>  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312"> <!--support Chinese-->
+<title lang="Network Select">Network Select</title>
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/layer.css" />
+	<script src="./js/plugins/jquery.js" type="text/javascript"></script>
+	<script src="./js/utils/ajax.js" type="text/javascript"></script>
+	<script src="./js/plugins/json2.js" type="text/javascript"></script>
+	<script src="./js/plugins/layer.js" type="text/javascript"></script>
+<!--	<script src="./js/utils/alert.js" type="text/javascript"></script>-->
+	<script src="./js/plugins/jquerysession.js" type="text/javascript"></script>
+	<script src="./js/utils/cookiesHandler.js" type="text/javascript"></script>
+	<script src="./js/utils/jsonHandler.js" type="text/javascript"></script>
+	<script charset="gb2312" language="javascript" type="text/javascript" src="./js/utils/alert.js"></script>
+</head>
+
+
+<body style="display:none">
+
+<div id="main">
+	<div class="block">
+		<h2><span lang="Network Selection">Network Selection</span><small></small></h2>
+		<div class="content">
+
+		      <table>
+		   		  <tr class="TODO"><td id="RAT" lang="Networks:">Networks:</td><td>
+					   <select id="select" name="wwan.RAT">
+					    <option value="0" lang="Auto">Auto</option>
+					    <option value="1" lang="3G Only">3G Only</option>
+					    <option value="2" lang="4G Only">4G Only</option>
+					   </select>
+					   </td></tr>
+					 
+						<tr>
+							<td>&nbsp;</td>
+							<td><input type="submit" id="apply" class="btn btn-primary" value="Apply" lang="Apply"></input></td>
+						</tr>
+				  </table>
+		</div>
+		<div class="boxbot"></div>
+	</div>
+</div>
+
+
+</body>
+<script charset="GBK" language="javascript" src="./js/netsel.js" type="text/javascript"></script>
+</html>

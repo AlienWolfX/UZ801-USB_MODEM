@@ -1,0 +1,13 @@
+*.jar
+*.exe
+*.keystore
+java2smali/*
+jadx-1.5.0/*
+dex-tools-v2.4/*
+build/*
+Mifi/smali/*
+Mifi/unknown/*
+Mifi/AndroidManifest.xml
+Mifi/apktool.yml
+Mifi/res/*
+Mifi/original/*

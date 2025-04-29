@@ -1,0 +1,109 @@
+<!--  <?xml version="1.0" encoding="UTF-8" ?>  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312"> <!--support Chinese-->
+<title lang="Device Operation">Device Operation</title>
+<!--  <link rel="stylesheet" type="text/css" href="%{eval:uri link="/css/common.css"}%" /> -->
+  <link rel="stylesheet" href="css/common.css">  
+  <link rel="stylesheet" type="text/css" href="css/layer.css" />
+  <script src="./js/plugins/jquery.js" type="text/javascript"></script>
+	<script src="./js/utils/ajax.js" type="text/javascript"></script>
+	<script src="./js/plugins/json2.js" type="text/javascript"></script>
+	<script src="./js/plugins/layer.js" type="text/javascript"></script>
+	<script src="./js/utils/alert.js" type="text/javascript"></script>
+	<script src="./js/plugins/jquerysession.js" type="text/javascript"></script>
+	<script src="./js/utils/cookiesHandler.js" type="text/javascript"></script>
+	<script src="./js/utils/jsonHandler.js" type="text/javascript"></script>
+</head>
+
+<body style="display:none;">
+			
+			
+<div id="main" >
+  <div class="block">
+   <h2><span>      </span></h2>
+   
+
+  <h2><span style="padding-left: 10px" lang="Firmware update">Firmware update</span></h2>
+		<div class="content" id="content">	 
+		  
+            <span lang="Please follow the steps below:"></span>
+        <table >   
+			 <tr>
+				<td style="width:5px" ></td>
+            <td style="font-size: 15px;" lang="1. Download the latest firmware."></td>
+            </tr>
+            <tr>
+				<td style="width:5px" ></td>
+				<td style="font-size: 15px;" lang="2. Select the downloaded firmware in the [Firmware File] option."></td>
+				</tr>
+            <tr>
+				<td style="width:5px" ></td>
+				<td style="font-size: 15px;" lang="3. Click [Upload] to upload the file to the device."></td>
+				</tr>
+            <tr>
+				<td style="width:5px" ></td>
+				<td style="font-size: 15px;" lang="4. After the upload is completed, click [Upgrade], and the system will upgrade according to the firmware."></td>
+		    </tr>
+             <tr>
+				<td style="width:5px" ></td>
+				<td style="padding-left:15px;font-size: 15px;"  lang="The upgrade takes about 3-4 minutes, and the system will restart automatically after the upgrade."></td>
+			</tr>
+            <tr>
+				<td style="width:5px" ></td>
+				<td lang="5. If you click [Delete Upgrade Package], the system will delete the firmware just uploaded."></td>
+			</tr>
+        </table>
+        	
+        <table>
+            <tr>
+			   
+               <td style="width:35%;padding-left:50px" lang="Product model:"></td>
+               <td id="producttype"></td>
+            </tr>
+             <tr>
+			   
+               <td style="width:35%;padding-left:50px" lang="Firmware version:"></td>
+               <td id="firmwareVer"></td>
+            </tr>
+            <tr>
+			   
+			   <td style="width:35%;padding-left:50px" lang="Firmware file:"></td>
+               <td><input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"></td>
+               
+            </tr>
+            <tr id="progressTR" name="progressTR">
+               <td style="width:35%;padding-left:50px"></td>
+               <td> <div  class="processcontainer" style="margin-top:10px;">  
+                    <div id="processbar" style="width:0%;"/></div>  </td>
+             </tr>
+            <tr>
+               <td style="width:35%;padding-left:50px"></td>
+             <td><button id="uploadB" lang="Upload" class="btn btn-primary" style="margin-top:10px;">Upload</button> 
+                  <button id="Upgrade" lang="Upgrade" class="btn btn-primary" style="margin-top:10px;display:none">Upgrade</button>
+                   <button id="Delete" lang="Delete Upgrade package" class="btn btn-primary" style="margin-top:10px;display:none">Delete Upgrade package</button></td>
+            </tr>
+        </table>
+  
+<!--    <div class="progress" id="progress">
+        <div></div>
+    </div>-->
+   
+  </div> 
+  
+
+    <!-- 按钮 -->
+    
+    <!-- 展示区域 -->
+  <!--  <div id="fileName" style="margin-top:10px;margin-left:50px">
+    </div>
+    <div id="fileSize" style="margin-top:10px;margin-left:50px">
+    </div>-->
+	</div>	 
+</div>       <!--  end of main  -->
+
+</body>
+<script src="./js/upgrade.js" type="text/javascript"></script>
+</html>

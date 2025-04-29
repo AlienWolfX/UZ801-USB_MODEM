@@ -1,0 +1,19 @@
+{
+ 
+  "MAC Address Filter" : "MAC地址过滤",
+   "black list" : "黑名单",
+   "white list" : "白名单",
+  
+  "close" : "关闭",
+  "Save All" : "保 存",
+  "Set" : "设置",
+  "MAC Address Filter" : "MAC地址过滤",
+  "MAC List":"MAC列表",
+  "Save":"保存" ,
+  "Current Devices" : "当前连接设备",
+  "Name" : "名&nbsp;称",
+  "Assigned IP" : "分配的&nbsp;IP",
+  "MAC" : "MAC地址",
+  "Media" : "连接方式",
+  "No data":"无数据"
+}

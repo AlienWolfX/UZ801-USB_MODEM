@@ -1,0 +1,9 @@
+{
+  "WI-FI Security" : "WI-FI 安全", 
+  "Encryption" : "加密方式",
+  "Password" : "密&nbsp;&nbsp;&nbsp;&nbsp;码",
+  " ('0'-'9','a'-'z','A'-'Z') (8-63 characters)" : " ('0'-'9','a'-'z','A'-'Z') (8-63 位字符)",
+  "Save" : "保  存",
+  "( After saving settings , the WIFI will restart automatically ! )" : "( 保存设置后,WIFI将会自动重启! )",
+  "Setting WIFI,please wait" : "正在设置WIFI,请等待 "
+}

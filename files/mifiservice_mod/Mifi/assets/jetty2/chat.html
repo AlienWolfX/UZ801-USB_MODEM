@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    // WebSocket 確認
+    if (!window.WebSocket && !window.MozWebSocket) {
+        alert("WebSocket disabled!!");
+        return;
+    }
+
+    // WebSocket 初期化
+    var wsurl = "ws://"+location.host+"/wschat";
+    var ws = window.MozWebSocket ? new MozWebSocket(wsurl) : new WebSocket(wsurl);
+    $(window).unload(function(){ ws.close(); ws = null });
+
+    // メッセージを受けたらそのメッセージを追加
+    ws.addEventListener("message",function(msg) {
+        if (msg == null || msg.data == null)
+            return;
+        $("#log").append("<div class='message'>"+msg.data+"</div>");
+    }, false);
+
+    // 送信ボタンでメッセージ送信
+    $("#send").click(function(e) {
+        var text = $("#text").val();
+        ws.send(text);
+        $("#text").val("");
+    });
+});
+</script>
+</head>
+<body>
+  <div class="content">
+    <div id="log"></div>
+    <div id="send_textbox">
+      <input type="text" id="text"></input><input type="button" id="send" value="send"></input>
+    </div>
+  </div>
+</body>
+</html>
