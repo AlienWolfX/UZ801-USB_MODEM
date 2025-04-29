@@ -2,7 +2,6 @@
 *.exe
 *.keystore
 java2smali/*
-build
 Mifi/build/*
 jadx-1.5.0/*
 dex-tools-v2.4/*
