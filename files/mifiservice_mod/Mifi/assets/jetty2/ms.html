@@ -25,12 +25,21 @@
 			<td valign="top">
 	    <br>                                                                      
         <table id="mode_setting_table" cellspacing=0 cellpadding=0 width=100% border=0 > 
-	        <tr>
-	            <td class="listtopic" id="mode_switch_title" >Mode Switch:</td>
-	        </tr>
-	        <tr>                                                                    
-	            <td colspan=3>&nbsp;</td>
-	        </tr>			                                                               
+            <tr>
+                <td class="listtopic" id="mode_switch_title" >Mode Switch:</td>
+            </tr>
+            <!-- Add warning text -->
+            <tr>
+                <td>
+                    <p style="color: #ff0000; margin: 10px 0;">
+                        Enabling these options allows you to access advanced features. Debug mode enables DIAG+AT+MODEM interfaces. 
+                        Bootloader mode reboots the device into fastboot mode for flashing.
+                    </p>
+                </td>
+            </tr>
+            <tr>                                                                    
+                <td colspan=3>&nbsp;</td>
+            </tr>			                                                               
 	        <tr>
 	            <td class="top_head" id="debug_mode">
 		            <input type="radio" onoroff="off" value="debug" id="radio" name="storage.safeEject"> 
@@ -38,6 +47,14 @@
 	            </td>
 	        </tr>
 	        
+	        <!-- Add bootloader reboot option -->
+	        <tr>
+	            <td class="top_head" id="bootloader_mode">
+	                <input type="radio" onoroff="off" value="bootloader" id="bootloader" name="storage.safeEject">
+	                <span>Reboot to Bootloader</span>
+	            </td>
+	        </tr>
+
 	        <tr>
 	        <td class="head">
 	            &nbsp;
@@ -48,7 +65,6 @@
 		  
         <div class="div_btn">
 			<input type="submit" class="btn btn-primary" value="Apply" id="apply"></input> 
-        	<input type="reset" class="btn btn-primary" value="Refresh" id="refresh"></input>
         </div>
 			</td>
 		</tr>
