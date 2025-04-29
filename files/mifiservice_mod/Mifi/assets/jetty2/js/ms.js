@@ -74,7 +74,31 @@ $("#bootloader").bind("click", function (e) {
   }
 });
 
-// Remove the old apply button handler since we're handling actions directly
+$("#adb").bind("click", function (e) {
+  if ($(this).attr("onoroff") == "on") {
+    $(this).attr("onoroff", "off");
+    $(this).removeAttr("checked");
+  } else {
+    $(this).attr("onoroff", "on");
+    $(this).attr("checked", "checked");
+
+    // Confirm before enabling ADB
+    if (confirm("Are you sure you want to enable ADB?")) {
+      var param = { funcNo: 1022 }; // Function number for ADB enable
+      request(param, function (data) {
+        var flag = data.flag;
+        var error_info = data.error_info;
+
+        if (flag == "1") {
+          Alert("ADB enabled successfully");
+        } else {
+          Alert(mifi_translate(error_info));
+        }
+      });
+    }
+  }
+});
+
 $("#apply").bind("click", function (e) {
   window.location.reload();
 });

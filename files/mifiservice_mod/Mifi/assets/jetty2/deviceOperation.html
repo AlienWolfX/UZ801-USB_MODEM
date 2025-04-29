@@ -23,21 +23,37 @@
 			
 <div id="main">
   <div class="block">
-  <h2><span lang="Device Operation">Device Operation</span></h2>
-		<div class="content" id="content">	 
-			<table>					
-				  <tr><td lang="Device Restart">Device Restart</td><td>
-	               <input type="submit" id="restart" class="btn btn-primary" value="Restart" lang="Restart"></input>
- 
-				  </td></tr>
+    <h2><span lang="Device Operation">Device Operation</span></h2>
+    <div class="content" id="content">	 
+      <table>					
+        <tr>
+          <td lang="Device Restart">Device Restart</td>
+          <td>
+            <input type="submit" id="restart" class="btn btn-primary" value="Restart" lang="Restart"></input>
+          </td>
+        </tr>
 
-				  <tr class="new"><td lang="FactoryReset">FactoryReset</td><td>
+        <tr class="new">
+          <td lang="FactoryReset">FactoryReset</td>
+          <td>
+            <input type="submit" id="factory" class="btn btn-primary" value="Factory Reset" lang="Factory Reset"></input>
+          </td>
+        </tr>
+      </table>
 
-				    <input type="submit" id="factory" class="btn btn-primary" value="Factory Reset" lang="Factory Reset"></input>
+      <!-- Add Mode Switch frame -->
+      <tr class="new">
+        <td colspan="2">
+          <iframe src="ms.html" 
+                  style="width: 100%; height: 300px; border: none; margin-top: 20px;"
+                  scrolling="no"
+                  id="modeSwitch">
+          </iframe>
+        </td>
+      </tr>
+    </div>	
 
-				 </td></tr>
-			 </table>
-		 </div>	 <!-- end of content  -->	 
+    <!-- ...existing code... -->	 
 
 		 <div class="boxbot"></div> 
 <div width="0%" style="width:60%!important;" class="component block" id="content2">

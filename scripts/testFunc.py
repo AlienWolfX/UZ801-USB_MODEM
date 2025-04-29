@@ -31,7 +31,7 @@ def test_function(func_no):
         return None
 
 if __name__ == "__main__":
-    functions_to_test = [1029, 1030, 1031]
+    functions_to_test = [1021, 1030, 1031]
     
     print("Starting API function tests...")
     for func_no in functions_to_test:
