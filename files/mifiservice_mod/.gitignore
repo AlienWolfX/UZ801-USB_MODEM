@@ -2,12 +2,11 @@
 *.exe
 *.keystore
 java2smali/*
-build/*
+build
 Mifi/build/*
 jadx-1.5.0/*
 dex-tools-v2.4/*
 Mifi/smali/*
-buildv2/*
 Mifi/unknown/*
 Mifi/AndroidManifest.xml
 Mifi/apktool.yml
