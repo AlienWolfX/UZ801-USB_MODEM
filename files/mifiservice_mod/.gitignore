@@ -4,9 +4,8 @@
 java2smali/*
 jadx-1.5.0/*
 dex-tools-v2.4/*
-build/*
 Mifi/smali/*
-Mifi/build/*
+Mifi/buildv2/*
 Mifi/unknown/*
 Mifi/AndroidManifest.xml
 Mifi/apktool.yml
