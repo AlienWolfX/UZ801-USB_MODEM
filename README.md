@@ -449,4 +449,10 @@ These resources have been instrumental in the creation of this documentation.
 
 This repository is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+## Stargazers and Forkers
+
+[![Stargazers](https://reporoster.com/stars/AlienWolfX/UZ801-USB_MODEM)](https://github.com/AlienWolfX/UZ801-USB_MODEM/stargazers)
+
+[![Star History Chart](https://api.star-history.com/svg?repos=AlienWolfX/UZ801-USB_MODEM&type=Timeline)](https://www.star-history.com/#AlienWolfX/UZ801-USB_MODEM&Timeline)
+
 <p align="center">Copyright <b>AlienWolfX</b> 2025</p>
