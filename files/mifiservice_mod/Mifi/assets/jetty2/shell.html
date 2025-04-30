@@ -6,17 +6,29 @@
       body {
         font-family: Arial, sans-serif;
         margin: 20px;
-        background: #f0f0f0;
       }
       .container {
-        max-width: 800px;
-        margin: 0 auto;
+        max-width: 100%;
+        margin: 0;
+        padding: 20px;
+        height: calc(100vh - 40px); /* Account for padding */
+        overflow: hidden;
       }
-      #cmdInput {
+
+      #output {
         width: 100%;
+        height: calc(100% - 150px); /* Leave space for input and buttons */
+        background: #000;
+        color: #0f0;
+        font-family: monospace;
         padding: 10px;
-        margin-bottom: 10px;
+        overflow-y: auto;
         border: 1px solid #ccc;
+      }
+
+      #cmdInput {
+        width: calc(100% - 20px);
+        margin-bottom: 10px;
       }
       button {
         padding: 10px 20px;
@@ -65,22 +77,11 @@
         white-space: pre-wrap;
         word-wrap: break-word;
       }
-
-      #output {
-        width: 100%;
-        height: 500px;
-        background: #000;
-        color: #0f0;
-        font-family: monospace;
-        padding: 10px;
-        overflow-y: auto;
-        border: 1px solid #ccc;
-      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h2>Command Shell</h2>
+      <h2>Terminal</h2>
       <input type="text" id="cmdInput" placeholder="Enter command..." />
       <div class="button-group">
         <button onclick="executeCommand()">Execute</button>

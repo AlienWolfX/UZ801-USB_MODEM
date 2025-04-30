@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SMS Inbox</title>
+    <style>
+      .message {
+        border: 1px solid #ddd;
+        margin: 10px;
+        padding: 10px;
+        cursor: pointer;
+      }
+      .message-header {
+        display: flex;
+        justify-content: space-between;
+      }
+      .message-details {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background: #f5f5f5;
+      }
+      .expanded .message-details {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="inbox"></div>
+
+    <script>
+      function formatDate(timestamp) {
+        return new Date(Math.abs(parseInt(timestamp))).toLocaleString();
+      }
+
+      function toggleMessage(element) {
+        element.classList.toggle("expanded");
+      }
+
+      function fetchMessages() {
+        fetch("./json/sms.json")
+          .then((response) => response.json())
+          .then((messages) => {
+            const inbox = document.getElementById("inbox");
+            inbox.innerHTML = messages
+              .map(
+                (sms) =>
+                  '<div class="message" onclick="toggleMessage(this)">' +
+                  '<div class="message-header">' +
+                  "<span>From: " +
+                  sms.address +
+                  "</span>" +
+                  "<span>" +
+                  formatDate(sms.date) +
+                  "</span>" +
+                  "</div>" +
+                  '<div class="message-details">' +
+                  "<p><strong>Message:</strong> " +
+                  sms.body +
+                  "</p>" +
+                  "</div>" +
+                  "</div>"
+              )
+              .join("");
+          })
+          .catch((error) => {
+            document.getElementById("inbox").innerHTML =
+              "<p>Error: " + error.message + "</p>";
+          });
+      }
+
+      // Load messages when page opens
+      document.addEventListener("DOMContentLoaded", fetchMessages);
+    </script>
+  </body>
+</html>
