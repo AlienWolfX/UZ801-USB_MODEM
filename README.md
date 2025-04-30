@@ -186,7 +186,7 @@ You can then use tools such as PowerISO to view the different partitions of the 
 
 </details>
 
-## Getting Root
+## Getting Root + Busybox Installation
 
 > [!IMPORTANT]  
 > Some devices have root access out of the box. Please check if yours does before proceeding.
@@ -216,6 +216,18 @@ twrp install /sdcard/SR5-SuperSU-v2.82-SR5-20171001224502.zip
 
 reboot
 ```
+
+### Installing Busybox
+
+The busybox packed with the device doesn't work and some commands are missing thus if you want to use the command such as `vi` then you must install it
+
+Steps:
+
+1. Download [busybox.apk](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/busybox.apk)
+2. Install `adb install busybox.apk`
+3. Refer to [View Display](https://github.com/AlienWolfX/UZ801-USB_MODEM?tab=readme-ov-file#view-device-display) and Open the busybox application
+4. Press Install and grant root permission.
+5. Done!
 
 </details>
 
@@ -298,7 +310,7 @@ Install apk:
 
 </details>
 
-I've also attached my personally modified [MifiService.apk](files/MifiService_with_cmd_shell.apk) which replaces `funcNo: 1020` (which is responsible for WebUI password modification) to handle user defined command and return the result[⁽²⁾](https://github.com/AlienWolfX/UZ801-USB_MODEM/issues/8#issuecomment-2462613369). I have also removed the respective HTML and JS files for that functionality.
+I've also attached my personally modified [MifiService.apk](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/MifiService_with_cmd_shell.apk) which replaces `funcNo: 1020` (which is responsible for WebUI password modification) to handle user defined command and return the result[⁽²⁾](https://github.com/AlienWolfX/UZ801-USB_MODEM/issues/8#issuecomment-2462613369). I have also removed the respective HTML and JS files for that functionality.
 
 > [!NOTE]
 > The current patch lacks error handling and may crash if a command fails to execute.
