@@ -259,7 +259,7 @@ java -jar adbcontrol.jar
 > Don't forget to change the `versionCode` and `versionName` in the apktool.yml
 
 <details>
-First and foremost, we need to identify the correct APK file. Some versions of this dongle come with Jetty2m.apk and MifiService.apk. In my case, the MifiService.apk was located in **/system/priv-app/MifiService.apk**. I then pulled the APK using the command `adb pull /system/priv-app/MifiService.apk`
+First and foremost, we need to identify the correct APK file. Some versions of this dongle come with Jetty2m.apk and MifiService.apk. In my case, the MifiService.apk was located in `/system/priv-app/MifiService.apk`. I then pulled the APK using the command `adb pull /system/priv-app/MifiService.apk`
 
 Fetch test-keys:
 
@@ -300,6 +300,11 @@ Install apk:
 `adb install -r aligned.apk`
 
 </details>
+
+I've also attached my personally modified [MifiService.apk](files/MifiService_with_cmd_shell.apk) which replaces `funcNo: 1020` (which is responsible for WebUI password modification) to handle user defined command and return the result[⁽²⁾](https://github.com/AlienWolfX/UZ801-USB_MODEM/issues/8#issuecomment-2462613369). I have also removed the respective HTML and JS files for that functionality.
+
+> [!NOTE]
+> The current patch lacks error handling and may crash if a command fails to execute.
 
 ## Changing Default IP Address
 

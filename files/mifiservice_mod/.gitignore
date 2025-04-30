@@ -11,3 +11,4 @@ Mifi/AndroidManifest.xml
 Mifi/apktool.yml
 Mifi/res/*
 Mifi/original/*
+*.apk

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shell Command Interface</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background: #f0f0f0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      #cmdInput {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+      .button-group {
+        margin-bottom: 10px;
+      }
+      .button-group button {
+        margin-right: 10px;
+      }
+      .clear-btn {
+        background: #dc3545;
+      }
+      .clear-btn:hover {
+        background: #c82333;
+      }
+
+      .cmd-line {
+        color: #0f0;
+        margin-bottom: 5px;
+        padding: 2px 0;
+      }
+
+      .cmd-output {
+        color: #fff;
+        margin: 0 0 10px 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-family: monospace;
+        background: #1a1a1a;
+        padding: 8px;
+        border-radius: 4px;
+        /* Remove max-height and overflow-y to eliminate internal scrollbar */
+      }
+
+      .cmd-error {
+        color: #ff4444;
+        margin-bottom: 10px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      #output {
+        width: 100%;
+        height: 500px;
+        background: #000;
+        color: #0f0;
+        font-family: monospace;
+        padding: 10px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Command Shell</h2>
+      <input type="text" id="cmdInput" placeholder="Enter command..." />
+      <div class="button-group">
+        <button onclick="executeCommand()">Execute</button>
+        <button class="clear-btn" onclick="clearOutput()">Clear</button>
+      </div>
+      <div id="output"></div>
+    </div>
+
+    <script src="js/shell.js"></script>
+  </body>
+</html>
