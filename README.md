@@ -453,12 +453,6 @@ This repository is open-sourced software licensed under the [MIT license](https:
 
 [![Stargazers](https://reporoster.com/stars/AlienWolfX/UZ801-USB_MODEM)](https://github.com/AlienWolfX/UZ801-USB_MODEM/stargazers)
 
-<a href="https://www.star-history.com/#AlienWolfX/UZ801-USB_MODEM&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=AlienWolfX/UZ801-USB_MODEM&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=AlienWolfX/UZ801-USB_MODEM&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=AlienWolfX/UZ801-USB_MODEM&type=Date" />
- </picture>
-</a>
+<a href="https://www.star-history.com/#AlienWolfX/UZ801-USB_MODEM&Date"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=AlienWolfX/UZ801-USB_MODEM&type=Date&theme=dark" /> <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=AlienWolfX/UZ801-USB_MODEM&type=Date" /> <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=AlienWolfX/UZ801-USB_MODEM&type=Date" /> </picture> </a>
 
 <p align="center">Copyright <b>AlienWolfX</b> 2025</p>
