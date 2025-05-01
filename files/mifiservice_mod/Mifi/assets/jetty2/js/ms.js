@@ -2,6 +2,7 @@ var mode = "0";
 
 $(function () {
   init();
+  updateStatusIndicators();
 });
 
 function init() {
@@ -24,78 +25,108 @@ function init() {
   });
 }
 
-$("#radio").bind("click", function (e) {
-  if ($(this).attr("onoroff") == "on") {
-    $(this).attr("onoroff", "off");
-    $(this).removeAttr("checked");
-  } else {
-    $(this).attr("onoroff", "on");
-    $(this).attr("checked", "checked");
+function updateStatusIndicators() {
+  // Check debug mode status
+  var param = { funcNo: 1021 };
+  request(param, function (data) {
+    if (data.flag == "1") {
+      var result = data.results[0];
+      if (result.mode == "1") {
+        $("#debug_status").addClass("status-active");
+        $("#radio").prop("checked", true);
+      } else {
+        $("#debug_status").removeClass("status-active");
+        $("#radio").prop("checked", false);
+      }
+    }
+  });
 
-    // Confirm before enabling debug mode
+  // Check ADB status
+  var adbParam = { funcNo: 1023 }; // Assuming 1023 checks ADB status
+  request(adbParam, function (data) {
+    if (data.flag == "1") {
+      var result = data.results[0];
+      if (result.mode == "1") {
+        $("#adb_status").addClass("status-active");
+        $("#adb").prop("checked", true);
+      } else {
+        $("#adb_status").removeClass("status-active");
+        $("#adb").prop("checked", false);
+      }
+    }
+  });
+}
+
+$("#radio").on("change", function () {
+  if (this.checked) {
     if (confirm("Are you sure you want to enable debug mode?")) {
       var param = { funcNo: 1022, mode: "1" };
       request(param, function (data) {
-        var flag = data.flag;
-        var error_info = data.error_info;
-
-        if (flag == "1") {
+        if (data.flag == "1") {
           Alert("Debug mode enabled");
+          $("#debug_status").addClass("status-active");
         } else {
-          Alert(mifi_translate(error_info));
+          Alert(mifi_translate(data.error_info));
+          $(this).prop("checked", false);
         }
       });
+    } else {
+      $(this).prop("checked", false);
     }
+  } else {
+    var param = { funcNo: 1022, mode: "0" };
+    request(param, function (data) {
+      if (data.flag == "1") {
+        Alert("Debug mode disabled");
+        $("#debug_status").removeClass("status-active");
+      } else {
+        Alert(mifi_translate(data.error_info));
+        $(this).prop("checked", true);
+      }
+    });
   }
 });
 
-$("#bootloader").bind("click", function (e) {
-  if ($(this).attr("onoroff") == "on") {
-    $(this).attr("onoroff", "off");
-    $(this).removeAttr("checked");
-  } else {
-    $(this).attr("onoroff", "on");
-    $(this).attr("checked", "checked");
-
-    // Confirm before rebooting
-    if (confirm("Are you sure you want to reboot to bootloader?")) {
-      var param = { funcNo: 2000 };
-      request(param, function (data) {
-        var flag = data.flag;
-        var error_info = data.error_info;
-
-        if (flag == "1") {
-          Alert("Rebooting to bootloader...");
-        } else {
-          Alert(mifi_translate(error_info));
-        }
-      });
-    }
-  }
-});
-
-$("#adb").bind("click", function (e) {
-  if ($(this).attr("onoroff") == "on") {
-    $(this).attr("onoroff", "off");
-    $(this).removeAttr("checked");
-  } else {
-    $(this).attr("onoroff", "on");
-    $(this).attr("checked", "checked");
-
-    // Confirm before enabling ADB
+$("#adb").on("change", function () {
+  if (this.checked) {
     if (confirm("Are you sure you want to enable ADB?")) {
-      var param = { funcNo: 1022 }; // Function number for ADB enable
+      var param = { funcNo: 1022 };
       request(param, function (data) {
-        var flag = data.flag;
-        var error_info = data.error_info;
-
-        if (flag == "1") {
-          Alert("ADB enabled successfully");
+        if (data.flag == "1") {
+          Alert("ADB enabled");
+          $("#adb_status").addClass("status-active");
         } else {
-          Alert(mifi_translate(error_info));
+          Alert(mifi_translate(data.error_info));
+          $(this).prop("checked", false);
         }
       });
+    } else {
+      $(this).prop("checked", false);
     }
+  } else {
+    var param = { funcNo: 1022, mode: "0" };
+    request(param, function (data) {
+      if (data.flag == "1") {
+        Alert("ADB disabled");
+        $("#adb_status").removeClass("status-active");
+      } else {
+        Alert(mifi_translate(data.error_info));
+        $(this).prop("checked", true);
+      }
+    });
+  }
+});
+
+$("#bootloader").on("click", function () {
+  if (confirm("Are you sure you want to reboot to bootloader?")) {
+    var param = { funcNo: 2000 };
+    request(param, function (data) {
+      if (data.flag == "1") {
+        Alert("Rebooting to bootloader...");
+      } else {
+        Alert(mifi_translate(data.error_info));
+      }
+    });
   }
 });
 

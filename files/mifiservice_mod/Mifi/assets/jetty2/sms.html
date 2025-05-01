@@ -22,9 +22,64 @@
       .expanded .message-details {
         display: block;
       }
+
+      .reload-button {
+        background: #60d8fb;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 10px;
+        font-size: 13px;
+        width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .reload-button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .reload-button:hover:not(:disabled) {
+        background: hsl(194, 87%, 76%);
+      }
+
+      .messages-container {
+        max-height: 400px; /* Height of 3 messages plus some padding */
+        overflow-y: auto;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        padding: 5px;
+      }
+
+      /* Style for webkit browsers */
+      .messages-container::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .messages-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+
+      .messages-container::-webkit-scrollbar-thumb {
+        background: #60d8fb;
+        border-radius: 4px;
+      }
+
+      .messages-container::-webkit-scrollbar-thumb:hover {
+        background: hsl(194, 87%, 76%);
+      }
     </style>
   </head>
   <body>
+    <button class="reload-button" onclick="reloadMessages(this)" id="reloadBtn">
+      Reload Messages
+    </button>
     <div id="inbox"></div>
 
     <script>
@@ -38,33 +93,96 @@
 
       function fetchMessages() {
         fetch("./json/sms.json")
-          .then((response) => response.json())
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Failed to fetch messages");
+            }
+            return response.json();
+          })
           .then((messages) => {
             const inbox = document.getElementById("inbox");
-            inbox.innerHTML = messages
-              .map(
-                (sms) =>
-                  '<div class="message" onclick="toggleMessage(this)">' +
-                  '<div class="message-header">' +
-                  "<span>From: " +
-                  sms.address +
-                  "</span>" +
-                  "<span>" +
-                  formatDate(sms.date) +
-                  "</span>" +
-                  "</div>" +
-                  '<div class="message-details">' +
-                  "<p><strong>Message:</strong> " +
-                  sms.body +
-                  "</p>" +
-                  "</div>" +
-                  "</div>"
-              )
-              .join("");
+
+            if (!messages || messages.length === 0) {
+              inbox.innerHTML =
+                '<div class="message">No messages available</div>';
+              return;
+            }
+
+            // Wrap messages in scrollable container if more than 3
+            const needsScroll = messages.length > 3;
+            const containerStart = needsScroll
+              ? '<div class="messages-container">'
+              : "";
+            const containerEnd = needsScroll ? "</div>" : "";
+
+            inbox.innerHTML =
+              containerStart +
+              messages
+                .map(
+                  (sms) =>
+                    '<div class="message" onclick="toggleMessage(this)">' +
+                    '<div class="message-header">' +
+                    "<span>From: " +
+                    (sms.address || "Unknown") +
+                    "</span>" +
+                    "<span>" +
+                    formatDate(sms.date) +
+                    "</span>" +
+                    "</div>" +
+                    '<div class="message-details">' +
+                    "<p><strong>Message:</strong> " +
+                    (sms.body || "No content") +
+                    "</p>" +
+                    "</div>" +
+                    "</div>"
+                )
+                .join("") +
+              containerEnd;
           })
           .catch((error) => {
             document.getElementById("inbox").innerHTML =
-              "<p>Error: " + error.message + "</p>";
+              '<div class="message">No messages available</div>';
+            console.error("Error fetching messages:", error);
+          });
+      }
+
+      function reloadMessages(button) {
+        // Disable button and show loading state
+        button.disabled = true;
+        button.textContent = "Loading...";
+
+        const inbox = document.getElementById("inbox");
+        inbox.innerHTML = '<div class="message">Loading messages...</div>';
+
+        fetch("/ajax", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            funcNo: "1020",
+            cmd: "sh /system/bin/fetch_sms.json.sh",
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.flag === "1") {
+              setTimeout(fetchMessages, 500);
+            } else {
+              inbox.innerHTML =
+                '<div class="message">Error refreshing messages: ' +
+                data.result +
+                "</div>";
+            }
+          })
+          .catch((error) => {
+            inbox.innerHTML =
+              '<div class="message">Error: ' + error.message + "</div>";
+          })
+          .finally(() => {
+            // Re-enable button and restore text
+            button.disabled = false;
+            button.textContent = "Reload Messages";
           });
       }
 
