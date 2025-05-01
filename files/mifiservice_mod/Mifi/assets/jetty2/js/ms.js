@@ -34,24 +34,12 @@ function updateStatusIndicators() {
       if (result.mode == "1") {
         $("#debug_status").addClass("status-active");
         $("#radio").prop("checked", true);
-      } else {
-        $("#debug_status").removeClass("status-active");
-        $("#radio").prop("checked", false);
-      }
-    }
-  });
-
-  // Check ADB status
-  var adbParam = { funcNo: 1023 }; // Assuming 1023 checks ADB status
-  request(adbParam, function (data) {
-    if (data.flag == "1") {
-      var result = data.results[0];
-      if (result.mode == "1") {
+        // Enable ADB when DIAG is active
         $("#adb_status").addClass("status-active");
         $("#adb").prop("checked", true);
       } else {
-        $("#adb_status").removeClass("status-active");
-        $("#adb").prop("checked", false);
+        $("#debug_status").removeClass("status-active");
+        $("#radio").prop("checked", false);
       }
     }
   });
@@ -59,12 +47,19 @@ function updateStatusIndicators() {
 
 $("#radio").on("change", function () {
   if (this.checked) {
-    if (confirm("Are you sure you want to enable debug mode?")) {
+    if (
+      confirm(
+        "Are you sure you want to enable debug mode? This will also enable ADB."
+      )
+    ) {
       var param = { funcNo: 1022, mode: "1" };
       request(param, function (data) {
         if (data.flag == "1") {
-          Alert("Debug mode enabled");
+          Alert("Debug mode and ADB enabled");
           $("#debug_status").addClass("status-active");
+          // Also enable ADB
+          $("#adb_status").addClass("status-active");
+          $("#adb").prop("checked", true);
         } else {
           Alert(mifi_translate(data.error_info));
           $(this).prop("checked", false);
@@ -79,6 +74,9 @@ $("#radio").on("change", function () {
       if (data.flag == "1") {
         Alert("Debug mode disabled");
         $("#debug_status").removeClass("status-active");
+        // Also disable ADB
+        $("#adb_status").removeClass("status-active");
+        $("#adb").prop("checked", false);
       } else {
         Alert(mifi_translate(data.error_info));
         $(this).prop("checked", true);
