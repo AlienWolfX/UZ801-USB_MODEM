@@ -166,23 +166,6 @@ On Windows, If you intend to use edl you might encounter this error: `NotImpleme
 ## Firmware Dump and Restore
 
 <details>
-To enable EDL mode on your device, execute the following command:
-
-`adb reboot edl`
-
-Alternatively, for a more hands-on approach, you can short the D+ and GND on the USB or the 2 pads on the board before connecting it to your computer. Once the device is in EDL mode, execute the following commands to create a full backup:
-
-`python3 edl rf {your_filename}.bin`
-
-To restore simply run:
-
-`python3 edl wf {your_filename}.bin`
-
-for individual backup:
-
-`python3 edl rl {your_foldername} --genxml`
-
-You can then use tools such as PowerISO to view the different partitions of the dump.
 
 </details>
 
