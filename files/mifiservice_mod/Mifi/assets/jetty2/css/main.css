@@ -104,18 +104,6 @@ input.button:active {
   color: #000;
 }
 
-/*added by lyre*/
-#mesg_icon span.icon {
-  width: 20px;
-  height: 20px;
-  background: url(../img/sprites.png) no-repeat 0px -162px;
-}
-#mesg_icon.mesg_prompt span.icon {
-  background-position: -118px -162px;
-  cursor: pointer;
-}
-/*-------------*/
-
 #signal_grid span.icon {
   background: url(../img/sprites.png) no-repeat;
 }
@@ -281,13 +269,6 @@ input.button:active {
   line-height: 59px;
 }
 
-.charging {
-  background: url(../img/battery.gif) no-repeat center center;
-}
-
-.nobattery {
-  background: url(../img/nobattery.png) no-repeat center center;
-}
 #loading_container {
   padding-bottom: 15px;
 }
