@@ -24,6 +24,10 @@
     </picture>
 </a>
 
+## Contributing
+
+Contributions are welcome! If you have insights or modifications feel free to submit a pull request or open an issue.
+
 ## License
 
 This repository is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).

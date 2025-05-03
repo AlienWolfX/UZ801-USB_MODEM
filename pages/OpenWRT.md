@@ -46,9 +46,7 @@ After successful installation, you should see:
 
 ## Troubleshooting
 
-- If flashing fails, retry in EDL mode
-- For signal issues, check region settings
-- Web interface issues may require cache clear
+- For signal/modem issues, check **Changing Region**
 
 ### Can't use modem
 

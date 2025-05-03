@@ -1,4 +1,4 @@
-## UZ801 v3.2
+&nbsp;
 
 ## Welcome to the UZ801-USB_MODEM repository Wiki!
 
