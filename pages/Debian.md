@@ -63,6 +63,21 @@ Configure the device according to your needs:
 - Package installations
 - Firmware customizations
 
+## Troubleshooting
+
+### No internet connection via RNDIS using Wi-Fi
+
+`nmcli connection modify usb0 ipv4.method shared`
+
+```bash
+nmcli connection down usb0
+nmcli connection up usb0
+```
+
+### Can't use modem
+
+Kindly refer to [Changing Region](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Troubleshooting#changing-modem-region)
+
 ## Additional Resources
 
 - [Wim van 't Hoog's Blog](https://wvthoog.nl/openstick/) - Original project documentation

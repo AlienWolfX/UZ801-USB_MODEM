@@ -10,6 +10,7 @@
 - [Modifications](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Modifications)
 - [OpenWRT](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/OpenWRT)
 - [Debian](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Debian)
+- [Troubleshooting](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Troubleshooting)
 
 ## Project Statistics
 

@@ -53,6 +53,40 @@ After successful installation, you should see:
 - For signal issues, check region settings
 - Web interface issues may require cache clear
 
+### Can't use modem
+
+Kindly refer to [Changing Region](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Troubleshooting#changing-modem-region)
+
+### Connection Refuse
+
+If you encounter this problem simply set this on your OpenWRT dashboard
+
+```bash
+Name
+INTERNET
+
+Protocol
+Any
+
+Outbound zone
+wan modem
+
+Source address
+any
+
+Destination address
+any
+
+Action
+MASQUERADE - Automatically rewrite to outbound interface IP
+```
+
+### Can't use RNDIS after Installation
+
+Download [RNDIS Driver](https://github.com/milkv-duo/duo-files/raw/main/common/RNDIS_drivers_20231018.zip) and add it your device manager
+
+Alternatively you can use `Microsoft USB RNDIS` driver.
+
 ## Additional Resources
 
 - [HandsomeYingyan](https://github.com/HandsomeYingyan) - For HandsomeMod source code

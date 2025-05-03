@@ -7,8 +7,11 @@ This Wiki contains extensive information and research findings about the UZ801 v
 ## Contents
 
 - [Overview](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Overview)
-- [Firmware(Dump and Restore)](<https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Firmware(Dump_and_Restore)>)
-- [Modification](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Modifications)
+- [Firmware Dump and Restore](<https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Firmware(Dump_and_Restore)>)
+- [Modifications](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Modifications)
+- [OpenWRT](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/OpenWRT)
+- [Debian](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Debian)
+- [Troubleshooting](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Troubleshooting)
 
 ## Required Tools
 
