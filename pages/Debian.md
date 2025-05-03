@@ -1,4 +1,4 @@
-## UZ801 v3.2 Debian
+&nbsp;
 
 Based on Debian 6.7 with MSM8916 mainline support
 

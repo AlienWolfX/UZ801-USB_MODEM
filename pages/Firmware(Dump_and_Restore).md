@@ -1,4 +1,4 @@
-## Firmware Dump and Restore Guide
+&nbsp;
 
 ## Entering EDL Mode
 
