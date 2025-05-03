@@ -12,7 +12,7 @@ The OpenWRT build is based on an older version of OpenWRT. While some packages a
 ### Prerequisites
 
 - Download [`openwrt-UZ801.tar.xz`](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases) from releases
-- Ensure device is in EDL mode
+- Ensure device is in fastboot mode
 - Backup your current firmware (recommended)
 
 ### Installation Process
