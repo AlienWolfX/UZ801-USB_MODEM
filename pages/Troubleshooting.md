@@ -1,6 +1,6 @@
-# Troubleshooting
+## Troubleshooting
 
-## Changing modem region
+### Changing modem region
 
 First step is to extract the contents of modem.bin from your firmware dump if you use edl without `--genxml` flag you need to open the bin file with PowerISO or another software and extract the partition having type of `GPT FAT16`
 

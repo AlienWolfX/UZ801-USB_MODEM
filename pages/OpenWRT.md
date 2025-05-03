@@ -1,11 +1,8 @@
-# UZ801 v3.2 OpenWRT
+## UZ801 v3.2 OpenWRT
 
 ## Important Notes
 
 The OpenWRT build is based on an older version of OpenWRT. While some packages and applications may have limited functionality, the build remains usable. This guide is intended for users with OpenWRT experience.
-
-> [!WARNING]
-> If you cannot get a signal after installation, please refer to the [Region Change Guide](rsc/troubleshooting.md#changing-modem-region).
 
 ## Installation Steps
 
@@ -86,7 +83,3 @@ MASQUERADE - Automatically rewrite to outbound interface IP
 Download [RNDIS Driver](https://github.com/milkv-duo/duo-files/raw/main/common/RNDIS_drivers_20231018.zip) and add it your device manager
 
 Alternatively you can use `Microsoft USB RNDIS` driver.
-
-## Additional Resources
-
-- [HandsomeYingyan](https://github.com/HandsomeYingyan) - For HandsomeMod source code

@@ -1,4 +1,4 @@
-# Software Modifications
+## Software Modifications
 
 ## Root Access Setup
 
@@ -24,7 +24,8 @@ adb reboot bootloader
 fastboot boot twrp-3.1.1-0-seed.img
 ```
 
-> [!NOTE] Wait for ADB to detect the device again. This may take a few moments.
+> [!NOTE]
+> Wait for ADB to detect the device again. This may take a few moments.
 
 3. Install SuperSU through TWRP:
 
@@ -128,9 +129,6 @@ I've created a [modified version](https://github.com/AlienWolfX/UZ801-USB_MODEM/
 - Replaces password modification (`funcNo: 1020`) with command execution
 - Returns command results directly
 - Removes related HTML/JS files
-
-> [!WARNING]
-> The current implementation lacks proper error handling and may crash on failed commands.
 
 ## Troubleshooting
 
