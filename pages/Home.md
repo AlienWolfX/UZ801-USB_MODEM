@@ -8,6 +8,7 @@ This Wiki contains extensive information and research findings about the UZ801 v
 
 - [Overview](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Overview)
 - [Firmware(Dump and Restore)](<https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Firmware(Dump_and_Restore)>)
+- [Modification](https://github.com/AlienWolfX/UZ801-USB_MODEM/wiki/Modifications)
 
 ## Required Tools
 
