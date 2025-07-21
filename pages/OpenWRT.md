@@ -2,7 +2,8 @@
 
 ## Important Notes
 
-The OpenWRT build is based on an older version of OpenWRT. While some packages and applications may have limited functionality, the build remains usable. This guide is intended for users with OpenWRT experience.
+> [!WARNING]
+> The OpenWRT build is based on an older version of OpenWRT. While some packages and applications may have limited functionality, the build remains usable. This guide is intended for users with OpenWRT experience.
 
 ## Installation Steps
 
