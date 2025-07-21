@@ -101,7 +101,7 @@ mv platform.keystore {YOUR_WORK_DIR}
 java -jar apktool.jar d MifiService.apk -o MifiService
 ```
 
-2. Make modifications in the `assets` folder
+2. Make modifications in the `assets` folder or any part of the APK that you need to modify
 
 3. Recompile (use `android` as passphrase when prompted):
 
@@ -127,8 +127,7 @@ adb install -r aligned.apk
 I've created a [modified version](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/MifiService_with_cmd_shell.apk) that:
 
 - Replaces password modification (`funcNo: 1020`) with command execution
-- Returns command results directly
-- Removes related HTML/JS files
+- Returns command results directly in the web
 
 ## Troubleshooting
 

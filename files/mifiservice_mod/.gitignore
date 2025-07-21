@@ -3,6 +3,7 @@
 *.keystore
 java2smali/*
 Mifi/build/*
+Mif/*
 jadx-1.5.0/*
 dex-tools-v2.4/*
 Mifi/smali/*
@@ -12,3 +13,5 @@ Mifi/apktool.yml
 Mifi/res/*
 Mifi/original/*
 *.apk
+*.jadx
+*.project

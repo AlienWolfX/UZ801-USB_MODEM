@@ -11,7 +11,7 @@ A couple of months ago, I purchased this 4G LTE USB dongle from Shopee for aroun
 
 ## Device
 
-The heart of the dongle is an MSM8916, running a stripped-down version of Android 4.4.4 KitKat. Interestingly, **the setup restricts the use of two CPU cores, likely to prevent the device from overheating**. Even with just two cores enabled, the device runs quite hot.
+The heart of the dongle is an MSM8916, running a stripped-down version of Android 4.4.4 KitKat. Interestingly, **the setup restricts the use of two other CPU cores, likely to prevent the device from overheating**.
 
 ### Device Specs
 

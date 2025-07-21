@@ -1,6 +1,8 @@
 &nbsp;
 
-### Changing modem region
+## OpenWRT
+
+### No network/Modem stuck at searching
 
 First step is to extract the contents of modem.bin from your firmware dump if you use edl without `--genxml` flag you need to open the bin file with PowerISO or another software and extract the partition having type of `GPT FAT16`
 
@@ -18,3 +20,52 @@ Once you have selected your region, you'll find a group of folders typically rep
 
 > [!NOTE]
 > There are instances that the modem doesn't automatically work, If you encounter this issue you need to execute `adb shell` and `mmcli -m 0 -e` to enable your modem.
+
+### Connection Refuse
+
+If you encounter this problem simply set this on your OpenWRT dashboard
+
+```bash
+Name
+INTERNET
+
+Protocol
+Any
+
+Outbound zone
+wan modem
+
+Source address
+any
+
+Destination address
+any
+
+Action
+MASQUERADE - Automatically rewrite to outbound interface IP
+```
+
+### Can't use RNDIS after Installation
+
+Download [RNDIS Driver](https://github.com/milkv-duo/duo-files/raw/main/common/RNDIS_drivers_20231018.zip) and add it your device manager
+
+Alternatively you can use `Microsoft USB RNDIS` driver.
+
+## Android (Stock)
+
+### Missing IMEI
+
+1. adb connect to the device
+2. execute `modem_at AT+WRIMEI={YOUR_IMEI}`
+3. reboot
+
+## Debian
+
+### No internet connection via RNDIS using Wi-Fi
+
+`nmcli connection modify usb0 ipv4.method shared`
+
+```bash
+nmcli connection down usb0
+nmcli connection up usb0
+```
