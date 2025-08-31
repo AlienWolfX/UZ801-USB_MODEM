@@ -1,4 +1,4 @@
-&nbsp;
+# References
 
 This project references the following resources:
 

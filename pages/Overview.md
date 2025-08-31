@@ -1,4 +1,4 @@
-&nbsp;
+# Overview
 
 A couple of months ago, I purchased this 4G LTE USB dongle from Shopee for around 300+ PHP. Out of curiosity, I searched the internet to see if there was a way to modify the horrible web UI of the device. Here are some images of the device along with the board and its chips.
 
@@ -9,13 +9,11 @@ A couple of months ago, I purchased this 4G LTE USB dongle from Shopee for aroun
 | ![board1](https://i.ibb.co/jTwXYQ8/soc1.jpg "board1")   | ![board2](https://i.ibb.co/GWfPq4M/soc2.jpg "board2")   |
 | ![front](https://i.ibb.co/dQ82vyz/soc3.jpg "front")     |                                                         |
 
-## Device
+## Device Specifications
 
-The heart of the dongle is an MSM8916, running a stripped-down version of Android 4.4.4 KitKat. Interestingly, **the setup restricts the use of two other CPU cores, likely to prevent the device from overheating**.
+The heart of the dongle is an MSM8916, running a stripped-down version of Android 4.4.4 KitKat. Interestingly, **the setup restricts the use of two CPU cores, likely to prevent the device from overheating**.
 
-### Device Specs
-
-Processor:
+### Processor Information
 
 ```bash
 root@msm8916_32_512:/ $ cat /proc/cpuinfo
@@ -46,7 +44,7 @@ Serial          : 0000000000000000
 Processor       : ARMv7 Processor rev 0 (v7l)
 ```
 
-Ram:
+### Memory Information
 
 ```bash
 root@msm8916_32_512:/ $ cat /proc/meminfo

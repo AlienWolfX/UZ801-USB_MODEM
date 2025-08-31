@@ -1,4 +1,4 @@
-&nbsp;
+# Firmware Dump and Restore
 
 ## Entering EDL Mode
 
@@ -6,17 +6,16 @@ There are two methods to enable Emergency Download (EDL) mode:
 
 ### Method 1: Using ADB
 
-For Stock firmware:
+**For Stock firmware:**
 
 ```bash
 adb reboot edl
 ```
 
-For OpenWRT:
+**For OpenWRT:**
 
 ```bash
 adb reboot bootloader
-
 fastboot oem reboot edl
 ```
 
@@ -42,6 +41,12 @@ python3 edl rf backup_filename.bin
 python3 edl wf backup_filename.bin
 ```
 
+### Creating Individual Partition Backups
+
+```bash
+python3 edl rl output_folder --genxml
+```
+
 ## Analyzing the Firmware
 
 You can examine the partition structure of your backup using these tools:
@@ -50,7 +55,9 @@ You can examine the partition structure of your backup using these tools:
 - 7-Zip
 - HxD (Hex Editor)
 
-> [!NOTE]
+## Important Notes
+
+> [!IMPORTANT]
 >
 > - Always keep a backup of your original firmware
 > - Ensure stable USB connection during operations
@@ -62,7 +69,9 @@ You can examine the partition structure of your backup using these tools:
 
 If the device is not detected in EDL mode:
 
-1. Check USB drivers
+1. Check USB drivers are properly installed
 2. Try different USB ports
 3. Verify cable connection
 4. Ensure proper EDL mode entry
+
+For Windows users: Install the QDLoader 9008 driver if not automatically detected.

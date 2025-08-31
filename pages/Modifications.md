@@ -1,4 +1,4 @@
-&nbsp;
+# Modifications
 
 ## Root Access Setup
 
@@ -43,13 +43,13 @@ The default BusyBox installation lacks several commands (like `vi`). Here's how 
 
 1. Download [BusyBox APK](https://github.com/AlienWolfX/UZ801-USB_MODEM/releases/download/rev1/busybox.apk)
 
-2. Install the APK:
+1. Install the APK:
 
 ```bash
 adb install busybox.apk
 ```
 
-3. Launch BusyBox:
+1. Launch BusyBox:
    - Follow the [View Display Guide](https://github.com/AlienWolfX/UZ801-USB_MODEM?tab=readme-ov-file#view-device-display)
    - Open BusyBox application
    - Tap "Install"
@@ -101,22 +101,22 @@ mv platform.keystore {YOUR_WORK_DIR}
 java -jar apktool.jar d MifiService.apk -o MifiService
 ```
 
-2. Make modifications in the `assets` folder or any part of the APK that you need to modify
+1. Make modifications in the `assets` folder or any part of the APK that you need to modify
 
-3. Recompile (use `android` as passphrase when prompted):
+1. Recompile (use `android` as passphrase when prompted):
 
 ```bash
 java -jar apktool.jar b -o unsigned.apk MifiService
 ```
 
-4. Sign and align:
+1. Sign and align:
 
 ```bash
 zipalign -v 4 unsigned.apk aligned.apk
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ./platform.keystore aligned.apk testkey
 ```
 
-5. Install modified APK:
+1. Install modified APK:
 
 ```bash
 adb install -r aligned.apk

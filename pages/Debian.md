@@ -1,6 +1,6 @@
-&nbsp;
+# Debian Installation Guide
 
-Based on Debian 6.7 with MSM8916 mainline support
+> Based on Debian 6.7 with MSM8916 mainline support
 
 ## Prerequisites
 
@@ -23,13 +23,13 @@ unzip openstick-uz801-v3.0.zip
 cd openstick-uz801
 ```
 
-3. Boot into fastboot mode:
+1. Boot into fastboot mode:
 
 ```bash
-adb reboot-bootloader
+adb reboot bootloader
 ```
 
-4. Flash the firmware:
+1. Flash the firmware:
 
 - **Windows**:
 
