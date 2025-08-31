@@ -1,4 +1,3 @@
-# Debian Installation Guide
 
 > Based on Debian 6.7 with MSM8916 mainline support
 

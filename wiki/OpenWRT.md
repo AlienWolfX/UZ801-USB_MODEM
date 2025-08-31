@@ -1,4 +1,3 @@
-# OpenWRT Installation Guide
 
 ## Important Notes
 
